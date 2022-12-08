@@ -48,6 +48,7 @@ abstract class ArrayMutableMatrixBase<T> protected constructor(
     override fun forEach(action: Consumer<in T>) {
         for(element in data) {
             if (element != ArraySparseMatrix.SPARSE_CELL) {
+                @Suppress("UNCHECKED_CAST") // data needs to be nullable
                 action.accept(element as T)
             }
         }

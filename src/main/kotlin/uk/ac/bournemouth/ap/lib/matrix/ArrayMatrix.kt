@@ -29,8 +29,8 @@ class ArrayMatrix<T> @PublishedApi internal constructor(
      */
     @Suppress("NewApi")
     override fun forEach(action: Consumer<in T>) {
-        for(element in data) {
-            action.accept(element as T)
+        for(element: T in data) {
+            action.accept(element)
         }
     }
 
