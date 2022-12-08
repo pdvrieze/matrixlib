@@ -7,6 +7,7 @@ plugins {
     signing
     alias(libs.plugins.dokka)
     alias(libs.plugins.binaryValidator)
+    `java-library`
 }
 
 description = "Support library for working with 2D matrices. This includes matrices with gaps."
@@ -76,7 +77,7 @@ publishing {
                 "SNAPSHOT" in version.toString().toUpperCase() ->
                     uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
-                else ->
+                else                                           ->
                     uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             }
             credentials {
@@ -86,45 +87,51 @@ publishing {
         }
     }
 
-    publications.withType<MavenPublication> {
-        artifact(javadocJar)
+    publications {
 
-        signing.sign(this)
+        register<MavenPublication>("Jvm") {
+            artifact(javadocJar)
+            artifact(tasks.named("kotlinSourcesJar"))
+            artifact(tasks.named(kotlin.target.artifactsTaskName))
 
-        pom {
-            name.set(project.displayName)
-            description.set(project.description)
+            signing.sign(this)
 
-            url.set("https://github.com/pdvrieze/matrixlib")
+            pom {
+                name.set(project.displayName)
+                description.set(project.description)
 
-            licenses {
-                license {
-                    name.set("The Apache License, Version 2.0")
-                    url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                }
-            }
-            developers {
-                developer {
-                    id.set("pdvrieze")
-                    name.set("Paul de Vrieze")
-                    email.set("pdvrieze@bournemouth.ac.uk")
-                }
-            }
-            scm {
-                connection.set("scm:git:https://github.com/pdvrieze/matrixlib.git")
-                developerConnection.set("scm:git:https://github.com/pdvrieze/matrixlib.git")
                 url.set("https://github.com/pdvrieze/matrixlib")
-            }
-        }
 
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("pdvrieze")
+                        name.set("Paul de Vrieze")
+                        email.set("pdvrieze@bournemouth.ac.uk")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:https://github.com/pdvrieze/matrixlib.git")
+                    developerConnection.set("scm:git:https://github.com/pdvrieze/matrixlib.git")
+                    url.set("https://github.com/pdvrieze/matrixlib")
+                }
+            }
+
+        }
     }
+
 
 }
 
 signing {
-    val priv_key:String? = System.getenv("GPG_PRIV_KEY")
-    val passphrase:String? = System.getenv("GPG_PASSPHRASE")
-    if (priv_key==null ||passphrase==null) {
+    val priv_key: String? = System.getenv("GPG_PRIV_KEY")
+    val passphrase: String? = System.getenv("GPG_PASSPHRASE")
+    if (priv_key == null || passphrase == null) {
         logger.warn("No private key information found in environment. Falling back to gnupg.")
         useGpgCmd()
     } else {
