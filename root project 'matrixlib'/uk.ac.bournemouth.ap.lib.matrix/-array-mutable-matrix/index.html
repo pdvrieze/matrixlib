@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ArrayMutableMatrix</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>root project 'matrixlib'</span>
+            </a>
+    </div>
+    <div>
+1.0    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="root project 'matrixlib'::uk.ac.bournemouth.ap.lib.matrix/ArrayMutableMatrix///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">root project 'matrixlib'</a><span class="delimiter">/</span><a href="../index.html">uk.ac.bournemouth.ap.lib.matrix</a><span class="delimiter">/</span><span class="current">ArrayMutableMatrix</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Array</span><wbr></wbr><span>Mutable</span><wbr></wbr><span><span>Matrix</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ArrayMutableMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span> : <span data-unresolved-link="uk.ac.bournemouth.ap.lib.matrix.impl/AbstractMutableMatrix///PointingToDeclaration/">AbstractMutableMatrix</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span>, <a href="../-mutable-matrix/index.html">MutableMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span></div><p class="paragraph">Mutable matrix class backed by an array.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Extensions">Extensions</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="1847952366%2FConstructors%2F769193423" anchor-label="ArrayMutableMatrix" id="1847952366%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-array-mutable-matrix.html"><span>Array</span><wbr></wbr><span>Mutable</span><wbr></wbr><span><span>Matrix</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1847952366%2FConstructors%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="-array-mutable-matrix.html"><span class="token function">ArrayMutableMatrix</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">initValue<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create a matrix that is initialized with a single value.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1020916992%2FConstructors%2F769193423" anchor-label="ArrayMutableMatrix" id="1020916992%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-array-mutable-matrix.html"><span>Array</span><wbr></wbr><span>Mutable</span><wbr></wbr><span><span>Matrix</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1020916992%2FConstructors%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="-array-mutable-matrix.html"><span class="token function">ArrayMutableMatrix</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">original<span class="token operator">: </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Create a matrix by copying the <span data-unresolved-link="uk.ac.bournemouth.ap.lib.matrix/ArrayMutableMatrix/&amp;lt;init&amp;gt;/#uk.ac.bournemouth.ap.lib.matrix.Matrix[TypeParam(bounds=[kotlin.Any?])]/PointingToCallableParameters(0)/">original</span> matrix. Note that this doesn't do a deep copy (copy the value objects).</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="-1389612061%2FClasslikes%2F769193423" anchor-label="Companion" id="-1389612061%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1389612061%2FClasslikes%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">The companion object contains factory functions to create new instances with initialization.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="2082272094%2FFunctions%2F769193423" anchor-label="asSequence" id="2082272094%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-sparse-matrix/as-sequence.html"><span>as</span><wbr></wbr><span><span>Sequence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2082272094%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-sparse-matrix/as-sequence.html"><span class="token function">asSequence</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html">Sequence</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get all elements in the matrix as sequence.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1124697986%2FFunctions%2F769193423" anchor-label="contentEquals" id="-1124697986%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-matrix/content-equals.html"><span>content</span><wbr></wbr><span><span>Equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1124697986%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-matrix/content-equals.html"><span class="token function">contentEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-sparse-matrix/content-equals.html"><span class="token function">contentEquals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Determine whether the content of this matrix is the same as the other by checking equality on the cell values. Sparse matrices with different dimensions, but the same valid indices can be equal.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-972553582%2FFunctions%2F769193423" anchor-label="copyOf" id="-972553582%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="copy-of.html"><span>copy</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-972553582%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="copy-of.html"><span class="token function">copyOf</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">ArrayMutableMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a copy of the matrix of an appropriate type with the same content.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="547425177%2FFunctions%2F769193423" anchor-label="doSet" id="547425177%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="do-set.html"><span>do</span><wbr></wbr><span><span>Set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="547425177%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="do-set.html"><span class="token function">doSet</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Actual implementation of setting values, does not need validation</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-187295922%2FFunctions%2F769193423" anchor-label="fill" id="-187295922%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-mutable-sparse-matrix/fill.html"><span><span>fill</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-187295922%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-mutable-sparse-matrix/fill.html"><span class="token function">fill</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Helper function to set values</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="243978122%2FFunctions%2F769193423" anchor-label="forEach" id="243978122%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="for-each.html"><span>for</span><wbr></wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="243978122%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="for-each.html"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html">Consumer</a><span class="token operator">&lt;</span><span class="token keyword">in </span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Optimized implementation of forEach.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1983105158%2FFunctions%2F769193423" anchor-label="get" id="-1983105158%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-sparse-int-matrix/index.html#-1983105158%2FFunctions%2F769193423"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1983105158%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-sparse-int-matrix/index.html#-1983105158%2FFunctions%2F769193423"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">T</a></div><div class="brief "><p class="paragraph">Whatever the actual type, allow them to be read to read any value. Implementations are expected to use more precise return types.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-434500568%2FFunctions%2F769193423" anchor-label="isValid" id="-434500568%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-sparse-matrix/is-valid.html"><span>is</span><wbr></wbr><span><span>Valid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-434500568%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-sparse-matrix/is-valid.html"><span class="token function">isValid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">This function can be used to determine whether the given coordinates are valid. Returns true if valid. This function works on any value for the coordinates and should return <code class="lang-kotlin">false</code> for all values out of range (<code class="lang-kotlin">x&lt;0 || x&gt;=[maxWidth]</code>), (<code class="lang-kotlin">y&lt;0 || y&gt;=[maxHeight]</code>).</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1178915427%2FFunctions%2F769193423" anchor-label="iterator" id="1178915427%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-sparse-matrix/iterator.html"><span><span>iterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1178915427%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-sparse-matrix/iterator.html"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get an iterator over all elements in the (sparse) matrix.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-762720117%2FFunctions%2F769193423" anchor-label="set" id="-762720117%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="index.html#-762720117%2FFunctions%2F769193423"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-762720117%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="index.html#-762720117%2FFunctions%2F769193423"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set a specific value in the matrix</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1387152138%2FFunctions%2F769193423" anchor-label="spliterator" id="-1387152138%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-sparse-int-matrix/index.html#-1387152138%2FFunctions%2F769193423"><span><span>spliterator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1387152138%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-sparse-int-matrix/index.html#-1387152138%2FFunctions%2F769193423"><span class="token function">spliterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html">Spliterator</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1839242887%2FFunctions%2F769193423" anchor-label="toString" id="-1839242887%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="index.html#-1839242887%2FFunctions%2F769193423"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1839242887%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#-1839242887%2FFunctions%2F769193423"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Get a string representation of the matrix (line wrapped)</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-654308520%2FProperties%2F769193423" anchor-label="columnIndices" id="-654308520%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-matrix/column-indices.html"><span>column</span><wbr></wbr><span><span>Indices</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-654308520%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-654308520%2FProperties%2F769193423" anchor-label="columnIndices" id="-654308520%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-matrix/column-indices.html">columnIndices</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html">IntRange</a></div><div class="brief "><a data-name="-654308520%2FProperties%2F769193423" anchor-label="columnIndices" id="-654308520%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The indices of all columns in the matrix</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-893345289%2FProperties%2F769193423" anchor-label="height" id="-893345289%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="height.html"><span><span>height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-893345289%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-893345289%2FProperties%2F769193423" anchor-label="height" id="-893345289%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="height.html">height</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><a data-name="-893345289%2FProperties%2F769193423" anchor-label="height" id="-893345289%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The height of the matrix. This is effectively the same as <span data-unresolved-link="uk.ac.bournemouth.ap.lib.matrix/ArrayMutableMatrix/maxWidth/#/PointingToDeclaration/">maxWidth</span>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1901544528%2FProperties%2F769193423" anchor-label="maxHeight" id="-1901544528%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-int-matrix/index.html#-1901544528%2FProperties%2F769193423"><span>max</span><wbr></wbr><span><span>Height</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1901544528%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1901544528%2FProperties%2F769193423" anchor-label="maxHeight" id="-1901544528%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-int-matrix/index.html#-1901544528%2FProperties%2F769193423">maxHeight</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><a data-name="-1901544528%2FProperties%2F769193423" anchor-label="maxHeight" id="-1901544528%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The maximum x coordinate that is valid</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1545752003%2FProperties%2F769193423" anchor-label="maxWidth" id="-1545752003%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-int-matrix/index.html#-1545752003%2FProperties%2F769193423"><span>max</span><wbr></wbr><span><span>Width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1545752003%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1545752003%2FProperties%2F769193423" anchor-label="maxWidth" id="-1545752003%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-single-value-int-matrix/index.html#-1545752003%2FProperties%2F769193423">maxWidth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><a data-name="-1545752003%2FProperties%2F769193423" anchor-label="maxWidth" id="-1545752003%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The maximum x coordinate that is valid which can be stored.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="781112708%2FProperties%2F769193423" anchor-label="rowIndices" id="781112708%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-matrix/row-indices.html"><span>row</span><wbr></wbr><span><span>Indices</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="781112708%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="781112708%2FProperties%2F769193423" anchor-label="rowIndices" id="781112708%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-matrix/row-indices.html">rowIndices</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html">IntRange</a></div><div class="brief "><a data-name="781112708%2FProperties%2F769193423" anchor-label="rowIndices" id="781112708%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The indices of all rows in the matrix</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1748106281%2FProperties%2F769193423" anchor-label="validator" id="-1748106281%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-sparse-matrix/validator.html"><span><span>validator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1748106281%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-1748106281%2FProperties%2F769193423" anchor-label="validator" id="-1748106281%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../-sparse-matrix/validator.html">validator</a><span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><a data-name="-1748106281%2FProperties%2F769193423" anchor-label="validator" id="-1748106281%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">For copying allow retrieving the/a validator function</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-543398122%2FProperties%2F769193423" anchor-label="width" id="-543398122%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="width.html"><span><span>width</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-543398122%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-543398122%2FProperties%2F769193423" anchor-label="width" id="-543398122%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="width.html">width</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><a data-name="-543398122%2FProperties%2F769193423" anchor-label="width" id="-543398122%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The width of the matrix. This is effectively the same as <span data-unresolved-link="uk.ac.bournemouth.ap.lib.matrix/ArrayMutableMatrix/maxWidth/#/PointingToDeclaration/">maxWidth</span>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="tabbedcontent">Extensions</h2>
+      <div class="table" data-togglable="Extensions"><a data-name="-218388416%2FExtensions%2F769193423" anchor-label="fill" id="-218388416%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../fill.html"><span><span>fill</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-218388416%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../fill.html">T</a><span class="token operator">&gt; </span><a href="../-mutable-sparse-matrix/index.html">MutableSparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../fill.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../fill.html"><span class="token function">fill</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">setter<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../fill.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Helper function to set values into a <a href="../-mutable-sparse-matrix/index.html">MutableSparseMatrix</a>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="69402028%2FExtensions%2F769193423" anchor-label="forEach" id="69402028%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../for-each.html"><span>for</span><wbr></wbr><span><span>Each</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="69402028%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../for-each.html"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Perform the <a href="../for-each.html">action</a> for each value in the (sparse) matrix.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token operator">&gt; </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../for-each.html"><span class="token function">forEach</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../for-each.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Perform the <a href="../for-each.html">action</a> for each value in the matrix. This version uses the non-sparse nature of the matrix.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1323809340%2FExtensions%2F769193423" anchor-label="forEachIndex" id="-1323809340%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../for-each-index.html"><span>for</span><wbr></wbr><span>Each</span><wbr></wbr><span><span>Index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1323809340%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../for-each-index.html"><span class="token function">forEachIndex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Perform the <a href="../for-each-index.html">action</a> for each index in the (sparse) matrix. This skips sparse indices.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../for-each-index.html"><span class="token function">forEachIndex</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Perform the <a href="../for-each-index.html">action</a> for each index in the matrix. This version uses the non-sparse nature of the matrix.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-835670783%2FExtensions%2F769193423" anchor-label="get" id="-835670783%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-835670783%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/get.html">T</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/get.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pos<span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html">Coordinate</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/get.html">T</a></div><div class="brief "><p class="paragraph">Helper operator to get values based on a coordinate</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="299298648%2FExtensions%2F769193423" anchor-label="indices" id="299298648%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/indices.html"><span><span>indices</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="299298648%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/indices.html">indices</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html">Coordinate</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get an iterable with all valid indices in the matrix</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/indices.html">indices</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html">Coordinate</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-905362275%2FExtensions%2F769193423" anchor-label="isValid" id="-905362275%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/is-valid.html"><span>is</span><wbr></wbr><span><span>Valid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-905362275%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/is-valid.html">T</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/is-valid.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/is-valid.html"><span class="token function">isValid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pos<span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html">Coordinate</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Helper function that implements <a href="../-sparse-matrix/is-valid.html">SparseMatrix.isValid</a> for coordinates</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="735628492%2FExtensions%2F769193423" anchor-label="map" id="735628492%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../map.html"><span><span>map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="735628492%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../map.html">R</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../map.html"><span class="token function">map</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../map.html">R</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A map function that creates a new (sparse) matrix with each cell mapped by <a href="../map.html">transform</a>.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token punctuation">, </span><span class="token keyword"></span><a href="../map.html">R</a><span class="token operator">&gt; </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../map.html"><span class="token function">map</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../map.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../map.html">R</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../map.html">R</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A map function that creates a new matrix with each cell mapped by <a href="../map.html">transform</a>.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-768545556%2FExtensions%2F769193423" anchor-label="mapBoolean" id="-768545556%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html"><span>map</span><wbr></wbr><span><span>Boolean</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-768545556%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html"><span class="token function">mapBoolean</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/-sparse-boolean-matrix/index.html">SparseBooleanMatrix</a></div><div class="brief "><p class="paragraph">A map implementation that creates a boolean sparse matrix based upon the receiver and the transformation function.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token operator">&gt; </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html"><span class="token function">mapBoolean</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/map-boolean.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.boolean/-boolean-matrix/index.html">BooleanMatrix</a></div><div class="brief "><p class="paragraph">A map implementation that creates a boolean matrix based upon the receiver and the transformation function.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-628952500%2FExtensions%2F769193423" anchor-label="mapInt" id="-628952500%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html"><span>map</span><wbr></wbr><span><span>Int</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-628952500%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token operator">&gt; </span><a href="../-sparse-matrix/index.html">SparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html"><span class="token function">mapInt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-sparse-int-matrix/index.html">SparseIntMatrix</a></div><div class="brief "><p class="paragraph">Create a new <a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-sparse-int-matrix/index.html">SparseIntMatrix</a> with the dimensions of the original where the value of each cell is the result of applying the <a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">transform</a> to the value of the cell in the original.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token operator">&gt; </span><a href="../-matrix/index.html">Matrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html"><span class="token function">mapInt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-int-matrix/index.html">IntMatrix</a></div><div class="brief "><p class="paragraph">Create a new <a href="../../uk.ac.bournemouth.ap.lib.matrix.int/-int-matrix/index.html">IntMatrix</a> with the dimensions of the original where the value of each cell is the result of applying the <a href="../../uk.ac.bournemouth.ap.lib.matrix.int/map-int.html">transform</a> to the value of the cell in the original.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="530644226%2FExtensions%2F769193423" anchor-label="set" id="530644226%2FExtensions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="530644226%2FExtensions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/set.html">T</a><span class="token operator">&gt; </span><a href="../-mutable-sparse-matrix/index.html">MutableSparseMatrix</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/set.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">pos<span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html">Coordinate</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="../../uk.ac.bournemouth.ap.lib.matrix.ext/set.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Helper operator to set values based upon a coordinate</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
