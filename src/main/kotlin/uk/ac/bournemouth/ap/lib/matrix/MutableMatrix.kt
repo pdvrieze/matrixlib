@@ -14,14 +14,37 @@ interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
      * [MutableMatrix]).
      */
     companion object : MutableMatrixCompanion<Any?> {
+        /**
+         * Create a new *mutable* matrix that is initialized from the given matrix. Unlike the `Matrix`
+         * equivalent this version is guaranteed to create a new matrix, and it does not invoke `[copyOf]`.
+         *
+         * @param original The matrix to create a copy of
+         * @return A new `MutableMatrix` implementation that contains the same content as the original.
+         */
         override fun <T> invoke(original: Matrix<T>): MutableMatrix<T> {
             return ArrayMutableMatrix(original)
         }
 
+        /**
+         * A simple array-like mutable matrix that contains the given initial value.
+         *
+         * @param width The width of the matrix
+         * @param height The height of the matrix
+         * @param initValue The inititial value for each cell in the matrix.
+         */
         override fun <T> invoke(width: Int, height: Int, initValue: T): MutableMatrix<T> {
             return ArrayMutableMatrix(width, height, initValue)
         }
 
+        /**
+         * A simple array-like mutable matrix that contains the values given by the function. The values are assigned
+         * at construction.
+         *
+         * @param width The width of the matrix
+         * @param height The height of the matrix
+         * @param init Function that allows setting each cell in the matrix. Its parameters are the x and y coordinates.
+         * @return The resulting matrix (storing all values)
+         */
         @Suppress("OVERRIDE_BY_INLINE")
         override inline operator fun <T> invoke(
             width: Int,

@@ -1,10 +1,8 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
-import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.ext.FunMatrix
 import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableMatrixCompanion
-import uk.ac.bournemouth.ap.lib.matrix.impl.MatrixIndices
 
 /**
  * A matrix type (based upon [SparseMatrix]) but it has values at all coordinates.
@@ -72,14 +70,43 @@ interface Matrix<out T> : SparseMatrix<T> {
      * [Matrix]).
      */
     companion object : ImmutableMatrixCompanion<Any?> {
+        /**
+         * Create a copy of the parameter using the [`copyOf`](Matrix.copyOf) member function.
+         *
+         * @param original The matrix to create a copy of
+         * @return The copy (from [copyOf]), depending on the type this may be the same object as the original.
+         */
         override fun <T> invoke(original: Matrix<T>): Matrix<T> {
             return original.copyOf()
         }
 
+        /**
+         * A matrix that is contains the given "initial" value. The implementation is immutable.
+         *
+         * @param width The width of the matrix
+         * @param height The height of the matrix
+         * @param initValue The value for each cell in the matrix.
+         * @return The resulting matrix.
+         */
         override fun <T> invoke(width: Int, height: Int, initValue: T): Matrix<T> {
             return SingleValueMatrix(width, height, initValue)
         }
 
+        /**
+         * A simple array-like matrix that contains the values given by the function. The values are assigned at
+         * construction.
+         *
+         * ```kotlin
+         * val multiplicationTable = Matrix(12, 12) { x, y ->
+         *     (x * y).toString()
+         * }
+         * ```
+         *
+         * @param width The width of the matrix
+         * @param height The height of the matrix
+         * @param init Function that allows setting each cell in the matrix. Its parameters are the x and y coordinates.
+         * @return The resulting matrix (storing all values)
+         */
         @Suppress("OVERRIDE_BY_INLINE")
         override inline operator fun <T> invoke(
             width: Int,
@@ -89,6 +116,13 @@ interface Matrix<out T> : SparseMatrix<T> {
             return ArrayMatrix(width, height, init)
         }
 
+        /**
+         * A matrix backed directly by the function. The function is invoked on each read of the matrix.
+         * @param width The width of the matrix
+         * @param height The height of the matrix
+         * @param valueFun The function used to determine the value. The implementation does allow this value to change
+         *                 over time.
+         */
         override fun <T> fromFunction(width: Int, height: Int, valueFun: (Int, Int) -> T): Matrix<T> {
             return FunMatrix(width, height, valueFun)
         }

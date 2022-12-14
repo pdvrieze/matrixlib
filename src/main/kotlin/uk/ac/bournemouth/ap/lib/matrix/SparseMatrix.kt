@@ -1,10 +1,8 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
-import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueSparseMatrix
 import uk.ac.bournemouth.ap.lib.matrix.ext.indices
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableSparseMatrixCompanion
-import uk.ac.bournemouth.ap.lib.matrix.impl.SparseMatrixIndices
 
 /**
  * A 2-dimensional storage type/matrix that does not require values in all cells. This is a
@@ -169,19 +167,47 @@ interface SparseMatrix<out T> : Iterable<T> {
      * [SparseMatrix]).
      */
     companion object : ImmutableSparseMatrixCompanion<Any?> {
+        /**
+         * Create a copy of the parameter using the [`copyOf`](SparseMatrix.copyOf) member function.
+         *
+         * @param original The matrix to create a copy of
+         * @return The copy (from [copyOf]), depending on the type this may be the same object as the original.
+         */
         override fun <T> invoke(original: SparseMatrix<T>): SparseMatrix<T> {
             return original.copyOf()
         }
 
+        /**
+         * Create a sparse matrix that has the given maximum X and Y values, is initialized with the parameter
+         * value, and uses the function to determine whether the cell exists. The returned matrix is immutable,
+         * but the validator is not required to always return the same value.
+         *
+         * @param maxWidth The maximum width of the matrix
+         * @param maxHeight The maximum height of the matrix
+         * @param initValue The value for each cell in the matrix.
+         * @param validator Function that determines whether the cell at the given coordinates exists.
+         * @return The resulting matrix.
+         */
         override fun <T> invoke(
-            maxWidth: Int,
-            maxHeight: Int,
-            initValue: T,
-            validator: (Int, Int) -> Boolean
+                maxWidth: Int,
+                maxHeight: Int,
+                initValue: T,
+                validator: (Int, Int) -> Boolean
         ): SparseMatrix<T> {
             return SingleValueSparseMatrix(maxWidth, maxHeight, initValue, validator)
         }
 
+        /**
+         * Create a sparse matrix that has the given maximum X and Y values, has the given validator to determine
+         * sparseness and uses the given function to initialize the matrix (values set on construction).
+         *
+         * @param maxWidth The width of the matrix
+         * @param maxHeight The height of the matrix
+         * @param validator A function that is used to determine whether a particular coordinate is contained
+         *                 in the matrix.
+         * @param init An initialization function that sets the values for the matrix.
+         * @return The resulting matrix.
+         */
         @Suppress("OVERRIDE_BY_INLINE")
         override inline operator fun <T> invoke(
             maxWidth: Int,
@@ -192,10 +218,28 @@ interface SparseMatrix<out T> : Iterable<T> {
             return ArraySparseMatrix(maxWidth, maxHeight, validator, init)
         }
 
-        override fun <T> fromSparseValueMatrix(source: Matrix<SparseValue<T>>): SparseMatrix<T> {
-            return CompactArrayMutableSparseMatrix(source)
-        }
-
+        /**
+         * Create a sparse matrix with given maximum X and Y that is initialized using the given "constructor"
+         * function. This function invokes the initializer on construction only.
+         *
+         * Example (creating a matrix with a hole in the middle):
+         * ```kotlin
+         * val donut = SparseMatrix(3, 3) { x, y ->
+         *     when {
+         *       y == 0 -> value(x + 1)
+         *       y == 2 -> value(7-x)
+         *       x == 0 -> value(8)
+         *       x == 2 -> value(4)
+         *       else -> sparse
+         *     }
+         * }
+         * ```
+         *
+         * @param maxWidth The width of the matrix
+         * @param maxHeight The height of the matrix
+         * @param init The function used to initialize the matrix.
+         * @return A matrix initialized according to the init function
+         */
         @Suppress("OVERRIDE_BY_INLINE")
         override inline operator fun <T> invoke(
             maxWidth: Int,
@@ -207,6 +251,17 @@ interface SparseMatrix<out T> : Iterable<T> {
                 maxHeight,
                 init
             )
+        }
+
+        /**
+         * Create a sparse matrix from the given matrix with special `SparseValue` instances that indicate either a
+         * value or sparseness.
+         *
+         * @param source The matrix providing the initial values and sparseness of the matrix.
+         * @return A new sparse matrix initialized from the source.
+         */
+        override fun <T> fromSparseValueMatrix(source: Matrix<SparseValue<T>>): SparseMatrix<T> {
+            return CompactArrayMutableSparseMatrix(source)
         }
 
     }

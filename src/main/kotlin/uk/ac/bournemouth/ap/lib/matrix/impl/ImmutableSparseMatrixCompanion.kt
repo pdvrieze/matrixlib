@@ -13,6 +13,8 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
 interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
     /**
      * Create a new [SparseMatrix] that is a copy of the original.
+     *
+     * @return The copy (from [copyOf]), depending on the type this may be the same object as the original.
      */
     override operator fun <T : B> invoke(original: SparseMatrix<T>): SparseMatrix<T>
 
@@ -21,9 +23,10 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
      * a validate function
      * @param maxWidth The width of the matrix
      * @param maxHeight The height of the matrix
-     * @param initValue An value for the non-sparse elements of the matrix
+     * @param initValue A value for the non-sparse elements of the matrix
      * @param validator A function that is used to determine whether a particular coordinate is contained
      *                 in the matrix.
+     * @return The resulting matrix.
      */
     override operator fun <T : B> invoke(
         maxWidth: Int,
@@ -41,12 +44,25 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
      * @param validator A function that is used to determine whether a particular coordinate is contained
      *                 in the matrix.
      * @param init An initialization function that sets the values for the matrix.
+     * @return The resulting matrix.
      */
     override operator fun <T : B> invoke(
         maxWidth: Int,
         maxHeight: Int,
         validator: (Int, Int) -> Boolean,
         init: (Int, Int) -> T
+    ): SparseMatrix<T>
+
+    /**
+     * Create a new [SparseMatrix] with the given size and intialization function. The initialization function
+     * @param maxWidth The width of the matrix
+     * @param maxHeight The height of the matrix
+     * @param init An initialization function that sets the values for the matrix.
+     */
+    override operator fun <T : B> invoke(
+        maxWidth: Int,
+        maxHeight: Int,
+        init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
     ): SparseMatrix<T>
 
     /**
@@ -57,6 +73,7 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
      * @param validator A function that is used to determine whether a particular coordinate is contained
      *                 in the matrix.
      * @param valueFun A function that provides the value at a coordinate
+     * @return The functional sparse matrix
      */
     fun <T : B> function(
         maxWidth: Int,
@@ -64,19 +81,6 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
         validator: (Int, Int) -> Boolean,
         valueFun: (Int, Int) -> T
     ): SparseMatrix<T> = FunSparseMatrix(maxWidth, maxHeight, validator, valueFun)
-
-    /**
-     * Create a new [SparseMatrix] with the given size and intialization function. It also requires
-     * a validate function
-     * @param maxWidth The width of the matrix
-     * @param maxHeight The height of the matrix
-     * @param init An initialization function that sets the values for the matrix.
-     */
-    override operator fun <T : B> invoke(
-        maxWidth: Int,
-        maxHeight: Int,
-        init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
-    ): SparseMatrix<T>
 
     /**
      * Create a new lazy [SparseMatrix] with the given size and intialization function. It also requires

@@ -42,12 +42,12 @@ kotlin {
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
-    from(tasks.named("dokkaHtml"))
+    from(tasks.named("dokkaJavadoc"))
 }
 
 
 tasks.withType<DokkaTask> {
-    moduleName.set(project.displayName)
+    moduleName.set("MatrixLib")
     dokkaSourceSets.configureEach {
         noAndroidSdkLink.set(true)
         noJdkLink.set(false)
