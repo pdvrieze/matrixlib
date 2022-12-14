@@ -8,6 +8,14 @@ adition to the `Matrix` types
 
 ## How to use
 The library is a Kotlin only module targeting the JVM/Android.
+
+### Add dependency
+```kotlin
+dependencies {
+    implementation("io.github.pdvrieze.matrixlib:matrixlib:1.0")
+}
+```
+
 ### Add repository
 The project's Maven access is hosted on OSS Sonatype (and available from Maven Central).
 
