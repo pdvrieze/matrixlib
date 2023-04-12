@@ -1,7 +1,5 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
-import java.util.function.Consumer
-
 /**
  * Implementation of a [MutableSparseMatrix] based upon an array to store the data.
  */
@@ -64,6 +62,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
             noinline validator: (Int, Int) -> Boolean,
             init: (Int, Int) -> T
         ): ArrayMutableSparseMatrix<T> {
+            @Suppress("UNCHECKED_CAST")
             val data = Array<Any?>(maxWidth * maxHeight) { c ->
                 val x = c % maxWidth
                 val y = c / maxWidth
@@ -72,7 +71,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
                     else -> null
                 }
             } as Array<T?>
-            return ArrayMutableSparseMatrix(maxWidth, data = data, validator)
+            return ArrayMutableSparseMatrix(maxWidth, data, validator)
         }
     }
 }
