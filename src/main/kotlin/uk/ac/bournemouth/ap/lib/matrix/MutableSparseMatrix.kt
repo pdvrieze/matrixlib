@@ -1,6 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
-import uk.ac.bournemouth.ap.lib.matrix.ext.indices
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
 
 /**
@@ -16,6 +16,11 @@ interface MutableSparseMatrix<T> : SparseMatrix<T> {
      * @param value The new value
      */
     operator fun set(x: Int, y: Int, value: T)
+
+    /**
+     * Helper operator to set values based upon a coordinate
+     */
+    operator fun set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
 
     /**
      * Helper function to set values

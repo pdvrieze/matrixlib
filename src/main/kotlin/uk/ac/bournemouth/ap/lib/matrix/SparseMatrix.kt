@@ -1,8 +1,9 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueSparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.ext.indices
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableSparseMatrixCompanion
+import uk.ac.bournemouth.ap.lib.matrix.impl.SparseMatrixIndices
 
 /**
  * A 2-dimensional storage type/matrix that does not require values in all cells. This is a
@@ -28,10 +29,20 @@ interface SparseMatrix<out T> : Iterable<T> {
     }
 
     /**
+     * Helper function that implements [SparseMatrix.isValid] for coordinates
+     */
+    fun <T> isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
+
+    /**
      * Whatever the actual type, allow them to be read to read any value. Implementations are
      * expected to use more precise return types.
      */
     operator fun get(x: Int, y: Int): T
+
+    /**
+     * Helper operator to get values based on a coordinate
+     */
+    operator fun get(pos: Coordinate): T = get(pos.x, pos.y)
 
     /**
      * For copying allow retrieving the/a validator function
@@ -42,6 +53,9 @@ interface SparseMatrix<out T> : Iterable<T> {
      * Creates a copy of the matrix of an appropriate type with the same content.
      */
     fun copyOf(): SparseMatrix<T>
+
+    /** Get an iterable with all valid indices in the matrix */
+    val indices: Iterable<Coordinate> get() = SparseMatrixIndices(this)
 
     /**
      * Get an iterator over all elements in the (sparse) matrix.
@@ -55,8 +69,7 @@ interface SparseMatrix<out T> : Iterable<T> {
         }
 
         override fun next(): T {
-            val idx = indexIterator.next()
-            return get(idx.x, idx.y)
+            return get(indexIterator.next())
         }
 
     }

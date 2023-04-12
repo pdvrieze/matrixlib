@@ -48,19 +48,24 @@ value class Coordinate constructor(@PublishedApi internal val packed: Int) {
 /**
  * Helper function that implements [SparseMatrix.isValid] for coordinates
  */
+@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
 fun <T> SparseMatrix<T>.isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
 
 /**
  * Helper operator to get values based on a coordinate
  */
+@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
 operator fun <T> SparseMatrix<T>.get(pos: Coordinate): T = get(pos.x, pos.y)
 
 /**
  * Helper operator to set values based upon a coordinate
  */
+@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
 operator fun <T> MutableSparseMatrix<T>.set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
 
-     /** Get an iterable with all valid indices in the matrix */
+/** Get an iterable with all valid indices in the matrix */
+@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
 val SparseMatrix<*>.indices: Iterable<Coordinate> get() = SparseMatrixIndices(this)
 
+@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
 val Matrix<*>.indices: Iterable<Coordinate> get() = MatrixIndices(this)

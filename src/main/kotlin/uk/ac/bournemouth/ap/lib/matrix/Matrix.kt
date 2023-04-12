@@ -1,8 +1,10 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.ext.FunMatrix
 import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableMatrixCompanion
+import uk.ac.bournemouth.ap.lib.matrix.impl.MatrixIndices
 
 /**
  * A matrix type (based upon [SparseMatrix]) but it has values at all coordinates.
@@ -24,6 +26,12 @@ interface Matrix<out T> : SparseMatrix<T> {
      * The indices of all rows in the matrix
      */
     val rowIndices: IntRange get() = 0 until height
+
+    /**
+     * Specialised version of indices that doesn't check validity.
+     */
+    override val indices: Iterable<Coordinate>
+        get() = MatrixIndices(this)
 
     /**
      * This implementation will just check that the coordinates are in range. There should be no
