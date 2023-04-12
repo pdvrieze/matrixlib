@@ -1,7 +1,7 @@
 [versions]
-junit5-jupiter = "5.2.0"
-kotlin = "1.7.21"
-dokka = "1.7.20"
+junit5-jupiter = "5.9.2"
+kotlin = "1.8.20"
+dokka = "1.8.10"
 binaryValidator = "0.12.1"
 
 [libraries]
