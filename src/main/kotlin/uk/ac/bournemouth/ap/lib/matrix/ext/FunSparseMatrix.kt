@@ -52,10 +52,15 @@ class FunSparseMatrix<T> private constructor(
         return FunSparseMatrix(maxWidth, maxHeight, dataFunctions)
     }
 
+    fun <R> map(transform: (T) -> R): FunSparseMatrix<R> {
+        return FunSparseMatrix(maxWidth, maxHeight, dataFunctions.map(transform))
+    }
+
     private interface DataAccess<T> {
         val validator: (Int, Int) -> Boolean
         fun get(matrix: FunSparseMatrix<T>, x: Int, y: Int): T
         fun isValid(x: Int, y: Int): Boolean
+        fun <R> map(transform: (T)->R): DataAccess<R>
     }
 
     /**
@@ -80,6 +85,12 @@ class FunSparseMatrix<T> private constructor(
 
             return v.value
         }
+
+        override fun <R> map(transform: (T) -> R): DataAccess<R> {
+            return AccessImpl1 { x, y ->
+                creator.valueFun(x, y).map(transform)
+            }
+        }
     }
 
     /**
@@ -98,6 +109,10 @@ class FunSparseMatrix<T> private constructor(
                 throw IndexOutOfBoundsException("($x, $y) is a sparse index")
 
             else -> valueFun(x, y)
+        }
+
+        override fun <R> map(transform: (T) -> R): DataAccess<R> {
+            return AccessImpl2(validator) { x, y -> transform(valueFun(x, y)) }
         }
 
         override fun isValid(x: Int, y: Int): Boolean = validator(x, y)

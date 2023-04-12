@@ -65,7 +65,7 @@ interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, Muta
             return invoke(width, height, init) as MutableMatrix<T>
         }
 
-        operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
+        inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
                 MutableBooleanMatrix {
             return ArrayMutableBooleanMatrix(width, height, init)
         }

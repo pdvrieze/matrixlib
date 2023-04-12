@@ -20,4 +20,9 @@ class FunMatrix<T>(
     override fun copyOf(): FunMatrix<T> {
         return FunMatrix(width, height, valueFun)
     }
+
+    fun <R> map(transform: (T) -> R): FunMatrix<R> {
+        return FunMatrix(width, height) { x, y -> transform(valueFun(x, y)) }
+    }
+
 }

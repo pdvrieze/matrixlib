@@ -2,7 +2,6 @@ package uk.ac.bournemouth.ap.lib.matrix.boolean
 
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.ext.indices
 
 /**
  * A map implementation that creates a boolean matrix based upon the receiver and the transformation
@@ -17,24 +16,22 @@ inline fun <T> Matrix<T>.mapBoolean(transform: (T) -> Boolean): BooleanMatrix {
  * transformation function.
  */
 inline fun <T> SparseMatrix<T>.mapBoolean(transform: (T) -> Boolean): SparseBooleanMatrix = when {
-    validator == Matrix.VALIDATOR ||
-            this is BooleanMatrix ->
-        MutableBooleanMatrix(maxWidth, maxHeight).also { it.fill { x, y -> transform(get(x, y)) } }
+    validator == Matrix.VALIDATOR || this is Matrix ->
+        MutableBooleanMatrix(maxWidth, maxHeight) { x, y -> transform(get(x, y)) }
 
 
-    else -> {
-        val validate: (Int, Int) -> Boolean = when (this) {
-            is ArrayMutableSparseBooleanMatrix -> validator
-            else -> { x, y -> isValid(x, y) }
-        }
+    else -> MutableSparseBooleanMatrix(
+        maxWidth,
+        maxHeight,
+        validator = getValidator(),
+        init = { x, y -> transform(get(x, y)) }
+    )
+}
 
-        MutableSparseBooleanMatrix(
-            maxWidth,
-            maxHeight,
-            validator = validate,
-            init = { x, y -> transform(get(x, y)) }
-        )
-    }
+@PublishedApi
+internal fun <T> SparseMatrix<T>.getValidator() = when (this) {
+    is ArrayMutableSparseBooleanMatrix -> validator
+    else -> { x, y -> isValid(x, y) }
 }
 
 /**

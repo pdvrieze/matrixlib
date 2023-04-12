@@ -172,6 +172,11 @@ interface SparseMatrix<out T> : Iterable<T> {
          * a value that represents a sparse cell.
          */
         abstract val sparse: SparseValue<Nothing>
+
+        inline fun <I> SparseValue<I>.map(transform: (I) -> T): SparseValue<T> = when {
+            isValid -> value(transform(this.value))
+            else -> sparse
+        }
     }
 
     /**
