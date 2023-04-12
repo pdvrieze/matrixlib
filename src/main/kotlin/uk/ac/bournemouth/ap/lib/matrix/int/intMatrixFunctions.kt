@@ -3,7 +3,6 @@ package uk.ac.bournemouth.ap.lib.matrix.int
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
 import uk.ac.bournemouth.ap.lib.matrix.MutableMatrix
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.ext.indices
 import uk.ac.bournemouth.ap.lib.matrix.forEachIndex
 
 

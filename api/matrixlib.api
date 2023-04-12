@@ -91,12 +91,16 @@ public final class uk/ac/bournemouth/ap/lib/matrix/CompactArrayMutableSparseMatr
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public fun fill (Ljava/lang/Object;)V
 	public fun get (II)Ljava/lang/Object;
+	public fun get-hc5UFHM (I)Ljava/lang/Object;
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun getMaxHeight ()I
 	public fun getMaxWidth ()I
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun isValid (II)Z
+	public fun isValid-hc5UFHM (I)Z
 	public fun iterator ()Ljava/util/Iterator;
 	public fun set (IILjava/lang/Object;)V
+	public fun set-KjcGOE0 (ILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 	public fun toString (Ljava/lang/String;)Ljava/lang/String;
 }
@@ -123,6 +127,7 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/Matrix : uk/ac/b
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public abstract fun getColumnIndices ()Lkotlin/ranges/IntRange;
 	public abstract fun getHeight ()I
+	public abstract fun getIndices ()Ljava/lang/Iterable;
 	public abstract fun getRowIndices ()Lkotlin/ranges/IntRange;
 	public abstract fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public abstract fun getWidth ()I
@@ -141,12 +146,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/Matrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/Matrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/Matrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/Matrix;I)Ljava/lang/Object;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/Matrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/Matrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Ljava/util/Iterator;
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/Matrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -170,13 +178,17 @@ public final class uk/ac/bournemouth/ap/lib/matrix/MutableMatrix$DefaultImpls {
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;Ljava/lang/Object;)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;I)Ljava/lang/Object;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;ILjava/lang/Object;)V
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
 
@@ -185,6 +197,7 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/MutableSparseMat
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
 	public abstract fun fill (Ljava/lang/Object;)V
 	public abstract fun set (IILjava/lang/Object;)V
+	public abstract fun set-KjcGOE0 (ILjava/lang/Object;)V
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableSparseMatrixCompanion {
@@ -204,8 +217,12 @@ public final class uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix$DefaultIm
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;Ljava/lang/Object;)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;I)Ljava/lang/Object;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;ILjava/lang/Object;)V
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
 
@@ -215,10 +232,13 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/SparseMatrix : j
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public abstract fun get (II)Ljava/lang/Object;
+	public abstract fun get-hc5UFHM (I)Ljava/lang/Object;
+	public abstract fun getIndices ()Ljava/lang/Iterable;
 	public abstract fun getMaxHeight ()I
 	public abstract fun getMaxWidth ()I
 	public abstract fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public abstract fun isValid (II)Z
+	public abstract fun isValid-hc5UFHM (I)Z
 	public abstract fun iterator ()Ljava/util/Iterator;
 	public abstract fun toString (Ljava/lang/String;)Ljava/lang/String;
 }
@@ -236,7 +256,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/SparseMatrix$Companion : uk/a
 public final class uk/ac/bournemouth/ap/lib/matrix/SparseMatrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Ljava/lang/Object;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Ljava/util/Iterator;
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -271,6 +294,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMa
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;
 	public fun getColumnIndices ()Lkotlin/ranges/IntRange;
 	public fun getHeight ()I
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun getRowIndices ()Lkotlin/ranges/IntRange;
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun getWidth ()I
@@ -343,12 +367,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix$Default
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;I)Ljava/lang/Boolean;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Ljava/util/Iterator;
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -370,13 +397,19 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/CompactMutableBoolean
 	public fun fill (Z)V
 	public fun get (II)Ljava/lang/Boolean;
 	public synthetic fun get (II)Ljava/lang/Object;
+	public fun get-hc5UFHM (I)Ljava/lang/Boolean;
+	public synthetic fun get-hc5UFHM (I)Ljava/lang/Object;
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun getMaxHeight ()I
 	public fun getMaxWidth ()I
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun isValid (II)Z
+	public fun isValid-hc5UFHM (I)Z
 	public fun iterator ()Ljava/util/Iterator;
 	public synthetic fun set (IILjava/lang/Object;)V
 	public fun set (IIZ)V
+	public synthetic fun set-KjcGOE0 (ILjava/lang/Object;)V
+	public fun set-KjcGOE0 (IZ)V
 	public fun toString ()Ljava/lang/String;
 	public fun toString (Ljava/lang/String;)Ljava/lang/String;
 }
@@ -407,13 +440,17 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix$
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;Z)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;I)Ljava/lang/Boolean;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;IZ)V
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
 
@@ -445,8 +482,12 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanM
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;)Lkotlin/sequences/Sequence;
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;Z)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;I)Ljava/lang/Boolean;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;IZ)V
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
 
@@ -493,7 +534,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix$C
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;I)Ljava/lang/Boolean;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;)Ljava/util/Iterator;
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -518,11 +562,11 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/Coordinate {
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/CoordinateKt {
-	public static final fun get-uofrC9E (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Ljava/lang/Object;
-	public static final fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Ljava/lang/Iterable;
-	public static final fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Ljava/lang/Iterable;
-	public static final fun isValid-uofrC9E (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Z
-	public static final fun set-soHf72c (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;ILjava/lang/Object;)V
+	public static final synthetic fun get-uofrC9E (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Ljava/lang/Object;
+	public static final synthetic fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Ljava/lang/Iterable;
+	public static final synthetic fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Ljava/lang/Iterable;
+	public static final synthetic fun isValid-uofrC9E (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;I)Z
+	public static final synthetic fun set-soHf72c (Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;ILjava/lang/Object;)V
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix {
@@ -543,10 +587,13 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix : uk/ac/b
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix;
 	public fun get (II)Ljava/lang/Object;
+	public fun get-hc5UFHM (I)Ljava/lang/Object;
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun getMaxHeight ()I
 	public fun getMaxWidth ()I
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun isValid (II)Z
+	public fun isValid-hc5UFHM (I)Z
 	public fun iterator ()Ljava/util/Iterator;
 	public fun toString (Ljava/lang/String;)Ljava/lang/String;
 }
@@ -578,6 +625,7 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix : uk/a
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public fun getColumnIndices ()Lkotlin/ranges/IntRange;
 	public abstract fun getHeight ()I
+	public fun getIndices ()Ljava/lang/Iterable;
 	public final fun getMaxHeight ()I
 	public final fun getMaxWidth ()I
 	public fun getRowIndices ()Lkotlin/ranges/IntRange;
@@ -594,6 +642,7 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableMatrix
 	public abstract fun getHeight ()I
 	public abstract fun getWidth ()I
 	public final fun set (IILjava/lang/Object;)V
+	public fun set-KjcGOE0 (ILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -602,6 +651,7 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableSparse
 	protected abstract fun doSet (IILjava/lang/Object;)V
 	public fun fill (Ljava/lang/Object;)V
 	public final fun set (IILjava/lang/Object;)V
+	public fun set-KjcGOE0 (ILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -611,7 +661,10 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractSparseMatrix 
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	protected abstract fun doGet (II)Ljava/lang/Object;
 	public final fun get (II)Ljava/lang/Object;
+	public fun get-hc5UFHM (I)Ljava/lang/Object;
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun isValid (II)Z
+	public fun isValid-hc5UFHM (I)Z
 	public fun iterator ()Ljava/util/Iterator;
 	public fun toString ()Ljava/lang/String;
 	public fun toString (Ljava/lang/String;)Ljava/lang/String;
@@ -689,6 +742,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrix : u
 	public synthetic fun fill (Ljava/lang/Object;)V
 	public fun getColumnIndices ()Lkotlin/ranges/IntRange;
 	public fun getHeight ()I
+	public fun getIndices ()Ljava/lang/Iterable;
 	public fun getRowIndices ()Lkotlin/ranges/IntRange;
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun getWidth ()I
@@ -757,12 +811,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/IntMatrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;I)Ljava/lang/Integer;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Ljava/util/Iterator;
 	public static fun sum (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)I
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;Ljava/lang/String;)Ljava/lang/String;
@@ -810,13 +867,17 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix$DefaultI
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;I)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;I)Ljava/lang/Integer;
 	public static fun getColumnIndices (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getHeight (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)I
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)Ljava/lang/Iterable;
 	public static fun getRowIndices (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)Lkotlin/ranges/IntRange;
 	public static fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)Lkotlin/jvm/functions/Function2;
 	public static fun getWidth (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)I
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;II)V
 	public static fun sum (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;)I
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -851,8 +912,12 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix$De
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public static fun fill (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;I)V
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;I)Ljava/lang/Integer;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;)Ljava/util/Iterator;
+	public static fun set-KjcGOE0 (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;II)V
 	public static fun sum (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;)I
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;Ljava/lang/String;)Ljava/lang/String;
 }
@@ -906,7 +971,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix$Companion
 public final class uk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix$DefaultImpls {
 	public static fun asSequence (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Lkotlin/sequences/Sequence;
 	public static fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
+	public static fun get-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;I)Ljava/lang/Integer;
+	public static fun getIndices (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Ljava/lang/Iterable;
 	public static fun isValid (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;II)Z
+	public static fun isValid-hc5UFHM (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;I)Z
 	public static fun iterator (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Ljava/util/Iterator;
 	public static fun sum (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)I
 	public static fun toString (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;Ljava/lang/String;)Ljava/lang/String;

@@ -1,17 +1,11 @@
 package uk.ac.bournemouth.ap.lib.matrix.ext
 
-import uk.ac.bournemouth.ap.lib.matrix.Matrix
-import uk.ac.bournemouth.ap.lib.matrix.MutableSparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.impl.MatrixIndices
-import uk.ac.bournemouth.ap.lib.matrix.impl.SparseMatrixIndices
-
 /**
  * In many cases it is easier to work with a single coordinate rather than
  * with a pair of coordinates. The coordinate class allows this.
  */
 @JvmInline
-value class Coordinate constructor(@PublishedApi internal val packed: Int) {
+value class Coordinate(@PublishedApi internal val packed: Int) {
 
     /**
      * The coordinates actually only store shorts
@@ -44,28 +38,3 @@ value class Coordinate constructor(@PublishedApi internal val packed: Int) {
 
     override fun toString(): String = "($x, $y)"
 }
-
-/**
- * Helper function that implements [SparseMatrix.isValid] for coordinates
- */
-@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
-fun <T> SparseMatrix<T>.isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
-
-/**
- * Helper operator to get values based on a coordinate
- */
-@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
-operator fun <T> SparseMatrix<T>.get(pos: Coordinate): T = get(pos.x, pos.y)
-
-/**
- * Helper operator to set values based upon a coordinate
- */
-@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
-operator fun <T> MutableSparseMatrix<T>.set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
-
-/** Get an iterable with all valid indices in the matrix */
-@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
-val SparseMatrix<*>.indices: Iterable<Coordinate> get() = SparseMatrixIndices(this)
-
-@Deprecated("Use member function, available for ABI compatibility", level = DeprecationLevel.HIDDEN)
-val Matrix<*>.indices: Iterable<Coordinate> get() = MatrixIndices(this)

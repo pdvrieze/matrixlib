@@ -7,8 +7,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * [SparseMatrix] where values are determined by a function, not storage.
  * @property maxWidth The width of the matrix
  * @property maxHeight The height of the matrix
- * @property validator The function that determines which cells are valid (not sparse)
- * @property valueFun The function that determines the value of a cell
+ * @param dataFunctions object that provides access to the actual data.
  */
 class FunSparseMatrix<T> private constructor(
     override val maxWidth: Int,
