@@ -43,8 +43,8 @@ inline fun <T, R> SparseMatrix<T>.map(transform: (T) -> R): SparseMatrix<R> = wh
  * Perform the [action] for each index in the (sparse) matrix. This skips sparse indices.
  */
 inline fun SparseMatrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
-    for (x in 0 until maxWidth) {
-        for (y in 0 until maxHeight) {
+    for (y in 0 until maxHeight) {
+        for (x in 0 until maxWidth) {
             if (isValid(x, y)) {
                 action(x, y)
             }
@@ -57,8 +57,8 @@ inline fun SparseMatrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
  * the matrix.
  */
 inline fun Matrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
-    for (x in 0 until maxWidth) {
-        for (y in 0 until maxHeight) {
+    for (y in 0 until maxHeight) {
+        for (x in 0 until maxWidth) {
             action(x, y)
         }
     }
@@ -68,8 +68,8 @@ inline fun Matrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
  * Perform the [action] for each value in the (sparse) matrix.
  */
 inline fun <T> SparseMatrix<T>.forEach(action: (T) -> Unit) {
-    for (x in 0 until maxWidth) {
-        for (y in 0 until maxHeight) {
+    for (y in 0 until maxHeight) {
+        for (x in 0 until maxWidth) {
             if (isValid(x, y)) {
                 action(get(x, y))
             }
@@ -82,8 +82,8 @@ inline fun <T> SparseMatrix<T>.forEach(action: (T) -> Unit) {
  * the matrix.
  */
 inline fun <T> Matrix<T>.forEach(action: (T) -> Unit) {
-    for (x in 0 until maxWidth) {
-        for (y in 0 until maxHeight) {
+    for (y in 0 until maxHeight) {
+        for (x in 0 until maxWidth) {
             action(get(x, y))
         }
     }
