@@ -1,6 +1,8 @@
 package uk.ac.bournemouth.ap.lib.matrix.impl
 
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
+import uk.ac.bournemouth.ap.lib.matrix.MutableMatrix
+import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
 
 /**
  * Interface that serves as base interface for the companion object of [Matrix] and [MutableMatrix]

@@ -1,8 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix.impl
 
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
-import uk.ac.bournemouth.ap.lib.matrix.impl.validate
 
 /**
  * Abstract base class for [SparseMatrix] implementations.

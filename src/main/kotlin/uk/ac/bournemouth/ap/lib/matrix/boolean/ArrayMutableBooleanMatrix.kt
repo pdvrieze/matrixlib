@@ -1,7 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix.boolean
 
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
-import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableMatrixCompanion
 
 /**
  * An implementation of a mutable matrix backed by a [BooleanArray]. This matrix optimizes storing

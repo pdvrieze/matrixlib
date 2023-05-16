@@ -113,7 +113,9 @@ public interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparse
             initValue: Boolean,
             validator: (Int, Int) -> Boolean
         ): MutableSparseBooleanMatrix {
-            val data = BooleanArray(maxWidth * maxHeight).apply { if (initValue) fill(initValue) }
+            val data = BooleanArray(maxWidth * maxHeight).apply {
+                if (initValue) fill(true) // skip filling if false
+            }
             return ArrayMutableSparseBooleanMatrix(maxWidth, data, validator)
         }
 

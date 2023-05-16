@@ -50,11 +50,11 @@ public class ArraySparseMatrix<T> @PublishedApi internal constructor(
     }
 
     @JvmInline
-    private value class Value<out T>(val _value: Any?) : SparseMatrix.SparseValue<T> {
-        override val isValid: Boolean get() = _value != SPARSE_CELL
+    private value class Value<out T>(val content: Any?) : SparseMatrix.SparseValue<T> {
+        override val isValid: Boolean get() = content != SPARSE_CELL
 
         @Suppress("UNCHECKED_CAST")
-        override val value: T get() = _value as T
+        override val value: T get() = content as T
     }
 
     /**

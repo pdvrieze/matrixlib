@@ -1,9 +1,7 @@
 package uk.ac.bournemouth.ap.lib.matrix.ext
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
-import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 
 internal class CoordinateTest {
 

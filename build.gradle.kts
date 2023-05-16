@@ -1,4 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import java.util.*
 
 plugins {
     alias(libs.plugins.kotlinJvm)
@@ -68,7 +69,7 @@ publishing {
         maven {
             name = "OSS_registry"
             url = when {
-                "SNAPSHOT" in version.toString().toUpperCase() ->
+                "SNAPSHOT" in version.toString().uppercase() ->
                     uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 
                 else                                           ->
@@ -123,13 +124,13 @@ publishing {
 }
 
 signing {
-    val priv_key: String? = System.getenv("GPG_PRIV_KEY")
+    val privKey: String? = System.getenv("GPG_PRIV_KEY")
     val passphrase: String? = System.getenv("GPG_PASSPHRASE")
-    if (priv_key == null || passphrase == null) {
+    if (privKey == null || passphrase == null) {
         logger.warn("No private key information found in environment. Falling back to gnupg.")
         useGpgCmd()
     } else {
-        useInMemoryPgpKeys(priv_key, passphrase)
+        useInMemoryPgpKeys(privKey, passphrase)
     }
     setRequired { gradle.taskGraph.run { hasTask("publish") || hasTask("publishNative") } }
 }

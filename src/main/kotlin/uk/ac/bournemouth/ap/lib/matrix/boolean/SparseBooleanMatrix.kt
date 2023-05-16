@@ -49,6 +49,7 @@ public interface SparseBooleanMatrix : SparseMatrix<Boolean> {
         }
 
         override fun <T : Boolean> fromSparseValueMatrix(source: Matrix<SparseMatrix.SparseValue<T>>): SparseMatrix<T> {
+            @Suppress("UNCHECKED_CAST")
             return invoke(source.width, source.height) { x, y -> source[x,y] } as SparseMatrix<T>
         }
 

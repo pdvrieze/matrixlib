@@ -61,8 +61,9 @@ public interface SparseMatrixCompanion<B> {
     ): SparseMatrix<Any?>
 
     /**
-     * Factory unction to create an instance based upon the matrix of [SparseValue]s as initializers.
-     * This is not an invoke operator due to overloading issues
+     * Factory unction to create an instance based upon the matrix of
+     * [SparseMatrix.SparseValue](SparseValue)s as initializers. This is not
+     * an invoke operator due to overloading issues.
      */
     public fun <T : B> fromSparseValueMatrix(source: Matrix<SparseMatrix.SparseValue<T>>): SparseMatrix<T>
 }

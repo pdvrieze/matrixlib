@@ -18,8 +18,8 @@ public class ArrayMutableIntMatrix :
         data
     )
 
-    override fun fill(element: Int) {
-        data.fill(element)
+    override fun fill(value: Int) {
+        data.fill(value)
     }
 
     override fun copyOf(): ArrayMutableIntMatrix {

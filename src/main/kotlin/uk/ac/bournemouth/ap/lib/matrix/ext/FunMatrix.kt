@@ -1,6 +1,7 @@
 package uk.ac.bournemouth.ap.lib.matrix.ext
 
 import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMatrix
+import uk.ac.bournemouth.ap.lib.matrix.Matrix
 
 /**
  * [Matrix] where values are determined by a function, not storage.
