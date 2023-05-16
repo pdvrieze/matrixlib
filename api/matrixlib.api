@@ -266,6 +266,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/SparseMatrix$DefaultImpls {
 
 public abstract class uk/ac/bournemouth/ap/lib/matrix/SparseMatrix$SparseInit {
 	public abstract fun getSparse ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix$SparseValue;
+	public final fun map (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix$SparseValue;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix$SparseValue;
 	public abstract fun value (Ljava/lang/Object;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix$SparseValue;
 }
 
@@ -382,6 +383,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix$Default
 
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrixFunctionsKt {
 	public static final fun fill (Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;Lkotlin/jvm/functions/Function2;)V
+	public static final fun getValidator (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Lkotlin/jvm/functions/Function2;
 	public static final fun mapBoolean (Luk/ac/bournemouth/ap/lib/matrix/Matrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;
 	public static final fun mapBoolean (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;
 }
@@ -577,6 +579,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix : uk/ac/bournem
 	public fun getHeight ()I
 	public final fun getValueFun ()Lkotlin/jvm/functions/Function2;
 	public fun getWidth ()I
+	public final fun map (Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix : uk/ac/bournemouth/ap/lib/matrix/SparseMatrix {
@@ -595,6 +598,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix : uk/ac/b
 	public fun isValid (II)Z
 	public fun isValid-hc5UFHM (I)Z
 	public fun iterator ()Ljava/util/Iterator;
+	public final fun map (Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix;
 	public fun toString (Ljava/lang/String;)Ljava/lang/String;
 }
 

@@ -1,8 +1,8 @@
 [versions]
 junit5-jupiter = "5.9.2"
-kotlin = "1.8.20"
+kotlin = "1.8.21"
 dokka = "1.8.10"
-binaryValidator = "0.12.1"
+binaryValidator = "0.13.1"
 
 [libraries]
 junit5-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5-jupiter" }

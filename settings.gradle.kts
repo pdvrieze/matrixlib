@@ -1,11 +1,8 @@
-
 pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    mavenCentral()
-  }
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
 rootProject.name = "matrixlib"
-
-enableFeaturePreview("VERSION_CATALOGS")

@@ -1,18 +1,18 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    kotlin("jvm") version "1.7.21"
+    alias(libs.plugins.kotlinJvm)
+    `java-library`
     `maven-publish`
     signing
     alias(libs.plugins.dokka)
     alias(libs.plugins.binaryValidator)
-    `java-library`
 }
 
 description = "Support library for working with 2D matrices. This includes matrices with gaps."
 
 group = "io.github.pdvrieze.matrixlib"
-version = "1.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -29,11 +29,6 @@ tasks.test {
 kotlin {
 //    explicitApi()
     target {
-        compilations.configureEach {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
         mavenPublication {
             version = project.version as String
         }

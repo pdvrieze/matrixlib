@@ -49,7 +49,8 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
         override val value: Nothing get() = throw IllegalStateException("Sparse cells have no value")
     }
 
-    private inline class Value<out T>(val _value: Any?) : SparseMatrix.SparseValue<T> {
+    @JvmInline
+    private value class Value<out T>(val _value: Any?) : SparseMatrix.SparseValue<T> {
         override val isValid: Boolean get() = _value != SPARSE_CELL
         override val value: T get() = _value as T
     }
