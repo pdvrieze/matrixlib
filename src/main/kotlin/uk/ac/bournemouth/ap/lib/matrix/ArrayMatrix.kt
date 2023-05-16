@@ -8,7 +8,7 @@ import java.util.function.Consumer
  *
  * @constructor Internal version that exposes the underlying storage format.
  */
-class ArrayMatrix<T> @PublishedApi internal constructor(
+public class ArrayMatrix<T> @PublishedApi internal constructor(
     private val data: Array<T>,
     override val width: Int
 ) : AbstractMatrix<T>() {
@@ -37,7 +37,7 @@ class ArrayMatrix<T> @PublishedApi internal constructor(
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
 
         /**
          * Factory function to create an [ArrayMatrix].
@@ -47,7 +47,7 @@ class ArrayMatrix<T> @PublishedApi internal constructor(
          * @param init Function that determines the value at a particular location.
          */
         @Suppress("UNCHECKED_CAST")
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             width: Int,
             height: Int,
             init: (Int, Int) -> T

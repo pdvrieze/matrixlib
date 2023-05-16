@@ -10,7 +10,7 @@ import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
  * @property value The value for each valid cell
  * @property validator The function that determines which cells are valid (not sparse)
  */
-class SingleValueIntMatrix(width: Int, height: Int, value: Int) :
+public class SingleValueIntMatrix(width: Int, height: Int, value: Int) :
     SingleValueMatrix<Int>(width, height, value), IntMatrix {
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): IntArray = IntArray(width * height) { value }

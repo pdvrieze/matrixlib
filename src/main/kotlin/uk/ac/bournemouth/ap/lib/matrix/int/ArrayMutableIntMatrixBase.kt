@@ -5,19 +5,19 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMutableSparseMatrix
 /**
  * Helper base class for array based int matrices.
  */
-abstract class ArrayMutableIntMatrixBase internal constructor(
+public abstract class ArrayMutableIntMatrixBase internal constructor(
     override val maxWidth: Int,
     override val maxHeight: Int,
     protected val data: IntArray
 ) : AbstractMutableSparseMatrix<Int>(), MutableSparseIntMatrix {
 
-    constructor(maxWidth: Int, maxHeight: Int) :
+    public constructor(maxWidth: Int, maxHeight: Int) :
             this(maxWidth, maxHeight, IntArray(maxWidth * maxHeight))
 
     /**
      * Get a onedimensional array that stores all elements of the matrix.
      */
-    fun toFlatArray(): IntArray {
+    public fun toFlatArray(): IntArray {
         return data.copyOf()
     }
 

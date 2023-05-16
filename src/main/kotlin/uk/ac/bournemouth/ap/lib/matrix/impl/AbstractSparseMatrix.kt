@@ -8,7 +8,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.validate
  * Abstract base class for [SparseMatrix] implementations.
  * @suppress
  */
-abstract class AbstractSparseMatrix<T> protected constructor() : SparseMatrix<T> {
+public abstract class AbstractSparseMatrix<T> protected constructor() : SparseMatrix<T> {
 
     final override fun get(x: Int, y: Int): T {
         validate(x, y)

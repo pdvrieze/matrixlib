@@ -8,11 +8,11 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * subclasses). This enforces consistency, but also allows the companion to be used as factory.
  * @suppress
  */
-interface SparseMatrixCompanion<B> {
+public interface SparseMatrixCompanion<B> {
     /**
      * Create a new [SparseMatrix] that is a copy of the original.
      */
-    operator fun <T : B> invoke(original: SparseMatrix<T>): SparseMatrix<Any?>
+    public operator fun <T : B> invoke(original: SparseMatrix<T>): SparseMatrix<Any?>
 
     /**
      * Create a new [SparseMatrix] with the given size and intialization function. It also requires
@@ -23,7 +23,7 @@ interface SparseMatrixCompanion<B> {
      * @param validator A function that is used to determine whether a particular coordinate is contained
      *                 in the matrix.
      */
-    operator fun <T : B> invoke(
+    public operator fun <T : B> invoke(
         maxWidth: Int,
         maxHeight: Int,
         initValue: T,
@@ -40,7 +40,7 @@ interface SparseMatrixCompanion<B> {
      *                 in the matrix.
      * @param init An initialization function that sets the values for the matrix.
      */
-    operator fun <T : B> invoke(
+    public operator fun <T : B> invoke(
         maxWidth: Int,
         maxHeight: Int,
         validator: (Int, Int) -> Boolean,
@@ -54,7 +54,7 @@ interface SparseMatrixCompanion<B> {
      * @param maxHeight The height of the matrix
      * @param init An initialization function that sets the values for the matrix.
      */
-    operator fun <T : B> invoke(
+    public operator fun <T : B> invoke(
         maxWidth: Int,
         maxHeight: Int,
         init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
@@ -64,5 +64,5 @@ interface SparseMatrixCompanion<B> {
      * Factory unction to create an instance based upon the matrix of [SparseValue]s as initializers.
      * This is not an invoke operator due to overloading issues
      */
-    fun <T : B> fromSparseValueMatrix(source: Matrix<SparseMatrix.SparseValue<T>>): SparseMatrix<T>
+    public fun <T : B> fromSparseValueMatrix(source: Matrix<SparseMatrix.SparseValue<T>>): SparseMatrix<T>
 }

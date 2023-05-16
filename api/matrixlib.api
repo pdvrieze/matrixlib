@@ -279,7 +279,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMa
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMatrix$Companion;
 	public fun <init> (II)V
 	public fun <init> (IIZ)V
-	public fun <init> (II[Z)V
+	public synthetic fun <init> (II[Z)V
+	public fun <init> (I[Z)V
 	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)V
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z

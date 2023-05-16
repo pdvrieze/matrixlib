@@ -12,7 +12,7 @@ import java.util.function.Consumer
  *  @constructor This is an internal constructor that exposes the data format. Use the factory
  *               functions.
  */
-class ArrayMutableMatrix<T> @PublishedApi internal constructor(
+public class ArrayMutableMatrix<T> @PublishedApi internal constructor(
     override val width: Int,
     private val data: Array<T?>
 ) : AbstractMutableMatrix<T>(),
@@ -26,7 +26,7 @@ class ArrayMutableMatrix<T> @PublishedApi internal constructor(
      * @param height The (initial) height of the matrix
      * @param initValue The initial value for each cell
      */
-    constructor(width: Int, height: Int, initValue: T) : this(
+    public constructor(width: Int, height: Int, initValue: T) : this(
         width,
         (arrayOfNulls<Any?>(width * height) as Array<T?>).fillWith(initValue)
     )
@@ -36,7 +36,7 @@ class ArrayMutableMatrix<T> @PublishedApi internal constructor(
      * this doesn't do a deep copy (copy the value objects).
      * @param original The matrix to copy from.
      */
-    constructor(original: Matrix<T>) : this(
+    public constructor(original: Matrix<T>) : this(
         original.maxWidth,
         when (original) {
             is ArrayMutableMatrix -> original.data.copyOf()
@@ -75,7 +75,7 @@ class ArrayMutableMatrix<T> @PublishedApi internal constructor(
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
         /**
          * Create and initialize a matrix.
          *
@@ -83,7 +83,7 @@ class ArrayMutableMatrix<T> @PublishedApi internal constructor(
          * @param height The height of the matrix to create.
          * @param init Initializer that determines the initial value for the given coordinate.
          */
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             width: Int,
             height: Int,
             init: (Int, Int) -> T

@@ -8,11 +8,11 @@ import uk.ac.bournemouth.ap.lib.matrix.Matrix
  * subclasses). This enforces consistency, but also allows the companion to be used as factory.
  * @suppress
  */
-interface ImmutableMatrixCompanion<B>: MatrixCompanion<B> {
+public interface ImmutableMatrixCompanion<B>: MatrixCompanion<B> {
     /**
      * Create a matrix where each value is determined by invoking the [valueFun] function. It
      * does not store any values.
      */
-    fun <T : B> fromFunction(width: Int, height: Int, valueFun: (Int, Int) -> T): Matrix<T> =
+    public fun <T : B> fromFunction(width: Int, height: Int, valueFun: (Int, Int) -> T): Matrix<T> =
         FunMatrix(width, height, valueFun)
 }

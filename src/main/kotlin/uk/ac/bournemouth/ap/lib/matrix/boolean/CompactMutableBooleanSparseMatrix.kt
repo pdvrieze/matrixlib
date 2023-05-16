@@ -7,7 +7,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.validate
  * Implementation of [MutableSparseBooleanMatrix] where the same matrix is used to store
  * the sparseness as the actual value.
  */
-class CompactMutableBooleanSparseMatrix internal constructor(
+public class CompactMutableBooleanSparseMatrix internal constructor(
     override val maxWidth: Int,
     private val data: ByteArray
 ) : MutableSparseBooleanMatrix {
@@ -29,7 +29,7 @@ class CompactMutableBooleanSparseMatrix internal constructor(
         ) {
             throw IndexOutOfBoundsException("($x,$y) out of range: ([0,$maxWidth), [0,$maxHeight))")
         }
-        return when (val v = data[x + y * maxWidth].toInt()) {
+        return when (data[x + y * maxWidth].toInt()) {
             -1 -> throw IndexOutOfBoundsException("($x, $y) is a sparse index")
             0 -> false
             else -> true
@@ -48,11 +48,11 @@ class CompactMutableBooleanSparseMatrix internal constructor(
     private fun SparseMatrix<*>.getState(x: Int, y: Int) = when {
         x >= maxWidth ||
                 y >= maxHeight ||
-                !isValid(x, y) -> -1
-        else -> when (val v = get(x, y)) {
-            true -> 1
-            false -> 0
-            else -> -2
+                !isValid(x, y) -> SPARSE
+        else -> when (get(x, y)) {
+            true -> TRUE
+            false -> FALSE
+            else -> NON_BOOLEAN
         }
     }
 
@@ -92,3 +92,8 @@ class CompactMutableBooleanSparseMatrix internal constructor(
         return toString("CompactMutableBooleanSparseMatrix")
     }
 }
+
+private const val TRUE: Int = 1
+private const val FALSE: Int = 0
+private const val SPARSE: Int = -1
+private const val NON_BOOLEAN: Int = -2

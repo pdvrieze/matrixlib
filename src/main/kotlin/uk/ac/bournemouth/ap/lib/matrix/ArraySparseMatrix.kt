@@ -8,7 +8,7 @@ import java.util.function.Consumer
  *
  * @constructor Internal version that exposes the underlying storage format.
  */
-class ArraySparseMatrix<T> @PublishedApi internal constructor(
+public class ArraySparseMatrix<T> @PublishedApi internal constructor(
     private val data: Array<Any?>,
     width: Int,
 ) : AbstractSparseMatrix<T>() {
@@ -33,10 +33,10 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
     /**
      * Optimized implementation of forEach to perform [action] for each element in the array.
      */
-    @Suppress("NewApi")
     override fun forEach(action: Consumer<in T>) {
         for(element in data) {
             if (element != SPARSE_CELL) {
+                @Suppress("UNCHECKED_CAST")
                 action.accept(element as T)
             }
         }
@@ -52,13 +52,15 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
     @JvmInline
     private value class Value<out T>(val _value: Any?) : SparseMatrix.SparseValue<T> {
         override val isValid: Boolean get() = _value != SPARSE_CELL
+
+        @Suppress("UNCHECKED_CAST")
         override val value: T get() = _value as T
     }
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
 
         private object ValueCreator : SparseMatrix.SparseInit<Any>() {
             override fun value(v: Any): SparseMatrix.SparseValue<Any> = Value(v)
@@ -66,6 +68,7 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
             override val sparse: SparseMatrix.SparseValue<Nothing> = SPARSE_CELL
         }
 
+        @Suppress("UNCHECKED_CAST")
         @PublishedApi
         internal fun <T> valueCreator(): SparseMatrix.SparseInit<T> = ValueCreator as SparseMatrix.SparseInit<T>
 
@@ -75,14 +78,12 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
          * [validator] will be called exactly once for each coordinate. If it returns `true`
          * the init function is called to determine the initial value.
          *
-         * @param maxWidth The maximum width allowed in the matrix
-         * @param maxHeight The maximum height allowed in the matrix
+         * @param width The maximum width allowed in the matrix
+         * @param height The maximum height allowed in the matrix
          * @param validator Function that determines whether a particular location is valid or not.
          * @param init Function that determines the initial value for a location.
          */
-
-        @Suppress("UNCHECKED_CAST")
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             width: Int,
             height: Int,
             validator: (Int, Int) -> Boolean,
@@ -101,22 +102,22 @@ class ArraySparseMatrix<T> @PublishedApi internal constructor(
          * [maxWidth] and [maxHeight] are used for the underlying array dimensions. This
          * variant uses a sealed return type to determine whether a value is sparse or not.
          *
-         * @param maxWidth The maximum width allowed in the matrix
-         * @param maxHeight The maximum height allowed in the matrix
+         * @param width The maximum width allowed in the matrix
+         * @param height The maximum height allowed in the matrix
          * @param init Function that determines the initial value for a location.
          */
-        @Suppress("UNCHECKED_CAST")
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             width: Int,
             height: Int,
             init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
         ): ArraySparseMatrix<T> {
             val initContext = valueCreator<T>()
             return ArraySparseMatrix(
-                Array(width * height) {
-                    val x = it % width
-                    val y = it / width
-                    initContext.init(x, y).let { if (it.isValid) it.value else it }
+                Array(width * height) { idx ->
+                    val x = idx % width
+                    val y = idx / width
+                    val newValue = initContext.init(x, y)
+                    if (newValue.isValid) newValue.value else newValue
                 },
                 width
             )

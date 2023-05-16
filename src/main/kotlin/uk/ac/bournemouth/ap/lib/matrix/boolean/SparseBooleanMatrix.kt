@@ -7,13 +7,13 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableSparseMatrixCompanion
  * This particular interface only provides read access. The matrix needs to be initialized
  * appropriately or used on a class that is actually mutable.
  */
-interface SparseBooleanMatrix : SparseMatrix<Boolean> {
+public interface SparseBooleanMatrix : SparseMatrix<Boolean> {
     override fun copyOf(): SparseBooleanMatrix
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : ImmutableSparseMatrixCompanion<Boolean> {
+    public companion object : ImmutableSparseMatrixCompanion<Boolean> {
         override fun <T : Boolean> invoke(original: SparseMatrix<T>): SparseMatrix<T> {
             @Suppress("UNCHECKED_CAST")
             return invoke(source = original) as SparseMatrix<T>
@@ -24,7 +24,7 @@ interface SparseBooleanMatrix : SparseMatrix<Boolean> {
          *
          * @param source The source for the matrix data
          */
-        operator fun invoke(source: SparseMatrix<Boolean>): SparseBooleanMatrix =
+        public operator fun invoke(source: SparseMatrix<Boolean>): SparseBooleanMatrix =
             when (source) {
                 is BooleanMatrix -> ArrayMutableBooleanMatrix(source)
                 else -> ArrayMutableSparseBooleanMatrix(
@@ -59,7 +59,7 @@ interface SparseBooleanMatrix : SparseMatrix<Boolean> {
          * @param maxHeight Height of the matrix
          * @param init The function initializing the matrix
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             init: SparseMatrix.SparseInit<Boolean>.(Int, Int) -> SparseMatrix.SparseValue<Boolean>
@@ -95,7 +95,7 @@ interface SparseBooleanMatrix : SparseMatrix<Boolean> {
          * @param initValue The value of all cells
          * @param validator The function that determines whether a given cell is valid.
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             initValue: Boolean,
@@ -123,7 +123,7 @@ interface SparseBooleanMatrix : SparseMatrix<Boolean> {
          * @param init The function initializing the matrix
          * @param validator The function that determines whether a given cell is valid.
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

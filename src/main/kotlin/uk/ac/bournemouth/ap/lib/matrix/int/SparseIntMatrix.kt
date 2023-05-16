@@ -10,7 +10,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableSparseMatrixCompanion
  * This particular interface only provides read access. The matrix needs to be initialized
  * appropriately or used on a class that is actually mutable.
  */
-interface SparseIntMatrix : SparseMatrix<Int> {
+public interface SparseIntMatrix : SparseMatrix<Int> {
     override operator fun get(x: Int, y: Int): Int
 
     override fun copyOf(): SparseIntMatrix
@@ -18,7 +18,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
     /**
      * Calculate the sum of all values.
      */
-    fun sum(): Int {
+    public fun sum(): Int {
         var total = 0
         forEach { total += it }
         return total
@@ -27,7 +27,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : ImmutableSparseMatrixCompanion<Int> {
+    public companion object : ImmutableSparseMatrixCompanion<Int> {
         /**
          * Factory that creates a concrete implementation
          */
@@ -42,7 +42,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
          *
          * @param source The source for the matrix data
          */
-        operator fun invoke(source: SparseMatrix<Int>): SparseIntMatrix =
+        public operator fun invoke(source: SparseMatrix<Int>): SparseIntMatrix =
             when (source) {
                 is IntMatrix -> ArrayMutableIntMatrix(source)
                 else -> ArrayMutableSparseIntMatrix(
@@ -59,7 +59,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
             maxHeight: Int,
             init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
         ): SparseMatrix<T> {
-            @Suppress("UNCHECKED_CAST")
+            @Suppress("UNCHECKED_CAST", "MoveLambdaOutsideParentheses")
             return invoke(
                 maxWidth,
                 maxHeight,
@@ -74,7 +74,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
          * @param maxHeight Height of the matrix
          * @param init The function initializing the matrix
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             init: SparseMatrix.SparseInit<Int>.(Int, Int) -> SparseMatrix.SparseValue<Int>
@@ -93,6 +93,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
         }
 
         override fun <T : Int> fromSparseValueMatrix(source: Matrix<SparseMatrix.SparseValue<T>>): SparseMatrix<T> {
+            @Suppress("UNCHECKED_CAST")
             return invoke(source.width, source.height) { x, y -> source[x, y] } as SparseMatrix<T>
         }
 
@@ -114,7 +115,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
          * @param initValue The value of all cells
          * @param validator The function that determines whether a given cell is valid.
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             initValue: Int,
@@ -142,7 +143,7 @@ interface SparseIntMatrix : SparseMatrix<Int> {
          * @param init The function initializing the matrix
          * @param validator The function that determines whether a given cell is valid.
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

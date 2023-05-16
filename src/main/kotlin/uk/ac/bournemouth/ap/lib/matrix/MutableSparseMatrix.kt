@@ -7,7 +7,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
  * A mutable version of [SparseMatrix] that adds a setter ([set]) to allow for changing the values
  * in the matrix.
  */
-interface MutableSparseMatrix<T> : SparseMatrix<T> {
+public interface MutableSparseMatrix<T> : SparseMatrix<T> {
     /**
      * Set a specific value in the matrix
      *
@@ -15,17 +15,20 @@ interface MutableSparseMatrix<T> : SparseMatrix<T> {
      * @param y The y coordinate
      * @param value The new value
      */
-    operator fun set(x: Int, y: Int, value: T)
+    public operator fun set(x: Int, y: Int, value: T)
 
     /**
-     * Helper operator to set values based upon a coordinate
+     * Set a specific value in the matrix
+     *
+     * @param pos The coordinate to set
+     * @param value The new value
      */
-    operator fun set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
+    public operator fun set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
 
     /**
      * Helper function to set values
      */
-    fun fill(value: T) {
+    public fun fill(value: T) {
         for ((x, y) in indices) {
             this[x, y] = value
         }
@@ -41,7 +44,7 @@ interface MutableSparseMatrix<T> : SparseMatrix<T> {
      * guarantee as to the specific type returned for the interface (but always an instance of
      * [MutableSparseMatrix]).
      */
-    companion object : MutableSparseMatrixCompanion<Any?> {
+    public companion object : MutableSparseMatrixCompanion<Any?> {
         /**
          * Create a copy of the original matrix. Note that the returned type may differ depending
          * on the type of the parameter. In particular if the parameter is an instance of [Matrix]
@@ -133,11 +136,7 @@ interface MutableSparseMatrix<T> : SparseMatrix<T> {
             maxHeight: Int,
             init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
         ): MutableSparseMatrix<T> {
-            return CompactArrayMutableSparseMatrix<T>(
-                maxWidth,
-                maxHeight,
-                init
-            )
+            return CompactArrayMutableSparseMatrix<T>(maxWidth, maxHeight, init)
         }
 
         /**

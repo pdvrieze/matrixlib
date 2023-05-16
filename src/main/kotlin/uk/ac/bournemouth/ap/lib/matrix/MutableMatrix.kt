@@ -5,7 +5,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableMatrixCompanion
 /**
  * An extension to Matrix that is mutable. This is effectively a 2D array.
  */
-interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
+public interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
     override fun copyOf(): MutableMatrix<T>
 
     /**
@@ -13,7 +13,7 @@ interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
      * guarantee as to the specific type returned for the interface (but always an instance of
      * [MutableMatrix]).
      */
-    companion object : MutableMatrixCompanion<Any?> {
+    public companion object : MutableMatrixCompanion<Any?> {
         /**
          * Create a new *mutable* matrix that is initialized from the given matrix. Unlike the `Matrix`
          * equivalent this version is guaranteed to create a new matrix, and it does not invoke `[copyOf]`.

@@ -9,7 +9,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * subclasses). This enforces consistency, but also allows the companion to be used as factory.
  * @suppress
  */
-interface MutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
+public interface MutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
     override fun <T : B> invoke(original: SparseMatrix<T>): MutableSparseMatrix<T>
 
     override fun <T : B> invoke(

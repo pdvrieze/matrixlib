@@ -1,20 +1,23 @@
 package uk.ac.bournemouth.ap.lib.matrix.boolean
 
+import uk.ac.bournemouth.ap.lib.matrix.Matrix
+import uk.ac.bournemouth.ap.lib.matrix.MutableSparseMatrix
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
+import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
 
 /**
  * A mutable sparse boolean matrix implementation backed by an array.
  */
-class ArrayMutableSparseBooleanMatrix : ArrayMutableBooleanMatrixBase {
+public class ArrayMutableSparseBooleanMatrix : ArrayMutableBooleanMatrixBase {
 
     override val validator: (Int, Int) -> Boolean
 
-    constructor(maxWidth: Int, maxHeight: Int, validator: (Int, Int) -> Boolean) :
+    public constructor(maxWidth: Int, maxHeight: Int, validator: (Int, Int) -> Boolean) :
             super(maxWidth, maxHeight) {
         this.validator = validator
     }
 
-    constructor(
+    public constructor(
         maxWidth: Int,
         data: BooleanArray,
         validator: (Int, Int) -> Boolean
@@ -26,23 +29,23 @@ class ArrayMutableSparseBooleanMatrix : ArrayMutableBooleanMatrixBase {
         return ArrayMutableSparseBooleanMatrix(maxWidth, data.copyOf(), validator)
     }
 
-    override fun fill(element: Boolean) {
-        data.fill(element)
+    override fun fill(value: Boolean) {
+        data.fill(value)
     }
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
 
         /**
-         * Create a new instance with given [width], [height], [validator] and initialized according
+         * Create a new instance with given [maxWidth], [maxHeight], [validator] and initialized according
          * to [init].
          * @param validator This function determines whether a particular cell is part of the matrix.
          *                  Note that the implementation expect this function to return the same
          *                  result for all invocations.
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

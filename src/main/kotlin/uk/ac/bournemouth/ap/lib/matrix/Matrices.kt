@@ -1,11 +1,9 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
-import uk.ac.bournemouth.ap.lib.matrix.ext.indices
-
 /**
  * Helper function to set values into a [MutableSparseMatrix].
  */
-inline fun <T> MutableSparseMatrix<T>.fill(setter: (Int, Int) -> T) {
+public inline fun <T> MutableSparseMatrix<T>.fill(setter: (Int, Int) -> T) {
     for ((x, y) in indices) {
         this[x, y] = setter(x, y)
     }
@@ -17,7 +15,7 @@ inline fun <T> MutableSparseMatrix<T>.fill(setter: (Int, Int) -> T) {
  * @receiver The matrix to copy from. This also determines the dimensions
  * @param transform The function used to transform the
  */
-inline fun <T, R> Matrix<T>.map(transform: (T) -> R): Matrix<R> {
+public inline fun <T, R> Matrix<T>.map(transform: (T) -> R): Matrix<R> {
     return Matrix(width, height) { x, y -> transform(get(x, y)) }
 }
 
@@ -27,7 +25,7 @@ inline fun <T, R> Matrix<T>.map(transform: (T) -> R): Matrix<R> {
  * @receiver The matrix to copy from. This also determines the dimensions
  * @param transform The function used to transform the cell values
  */
-inline fun <T, R> SparseMatrix<T>.map(transform: (T) -> R): SparseMatrix<R> = when {
+public inline fun <T, R> SparseMatrix<T>.map(transform: (T) -> R): SparseMatrix<R> = when {
     validator == Matrix.VALIDATOR ||
             this is Matrix<T> -> (this as Matrix<T>).map(transform) //delegate to more specific function
 
@@ -42,7 +40,7 @@ inline fun <T, R> SparseMatrix<T>.map(transform: (T) -> R): SparseMatrix<R> = wh
 /**
  * Perform the [action] for each index in the (sparse) matrix. This skips sparse indices.
  */
-inline fun SparseMatrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
+public inline fun SparseMatrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
     for (y in 0 until maxHeight) {
         for (x in 0 until maxWidth) {
             if (isValid(x, y)) {
@@ -56,7 +54,7 @@ inline fun SparseMatrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
  * Perform the [action] for each index in the matrix. This version uses the non-sparse nature of
  * the matrix.
  */
-inline fun Matrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
+public inline fun Matrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
     for (y in 0 until maxHeight) {
         for (x in 0 until maxWidth) {
             action(x, y)
@@ -67,7 +65,7 @@ inline fun Matrix<*>.forEachIndex(action: (Int, Int) -> Unit) {
 /**
  * Perform the [action] for each value in the (sparse) matrix.
  */
-inline fun <T> SparseMatrix<T>.forEach(action: (T) -> Unit) {
+public inline fun <T> SparseMatrix<T>.forEach(action: (T) -> Unit) {
     for (y in 0 until maxHeight) {
         for (x in 0 until maxWidth) {
             if (isValid(x, y)) {
@@ -81,7 +79,7 @@ inline fun <T> SparseMatrix<T>.forEach(action: (T) -> Unit) {
  * Perform the [action] for each value in the matrix. This version uses the non-sparse nature of
  * the matrix.
  */
-inline fun <T> Matrix<T>.forEach(action: (T) -> Unit) {
+public inline fun <T> Matrix<T>.forEach(action: (T) -> Unit) {
     for (y in 0 until maxHeight) {
         for (x in 0 until maxWidth) {
             action(get(x, y))

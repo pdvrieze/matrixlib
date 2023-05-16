@@ -8,7 +8,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.validate
  * Abstract base class for [MutableSparseMatrix] implementations.
  * @suppress
  */
-abstract class AbstractMutableSparseMatrix<T> protected constructor() : AbstractSparseMatrix<T>(),
+public abstract class AbstractMutableSparseMatrix<T> protected constructor() : AbstractSparseMatrix<T>(),
     MutableSparseMatrix<T> {
 
     /** Implement setting by validating and the delegating to doSet */

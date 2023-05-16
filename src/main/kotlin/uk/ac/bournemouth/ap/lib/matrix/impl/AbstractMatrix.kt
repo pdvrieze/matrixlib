@@ -6,7 +6,7 @@ import uk.ac.bournemouth.ap.lib.matrix.Matrix
  * Abstract base class for [Matrix] implementations.
  * @suppress
  */
-abstract class AbstractMatrix<T> protected constructor() : AbstractSparseMatrix<T>(), Matrix<T> {
+public abstract class AbstractMatrix<T> protected constructor() : AbstractSparseMatrix<T>(), Matrix<T> {
     abstract override val width: Int
     abstract override val height: Int
 

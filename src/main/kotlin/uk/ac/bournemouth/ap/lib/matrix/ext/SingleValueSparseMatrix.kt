@@ -10,7 +10,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractSparseMatrix
  * @property value The value for each valid cell
  * @property validator The function that determines which cells are valid (not sparse)
  */
-open class SingleValueSparseMatrix<T>(
+public open class SingleValueSparseMatrix<T>(
     override val maxWidth: Int,
     override val maxHeight: Int,
     protected val value: T,

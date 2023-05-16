@@ -8,7 +8,7 @@ import uk.ac.bournemouth.ap.lib.matrix.MutableMatrix
  * subclasses). This enforces consistency, but also allows the companion to be used as factory.
  * @suppress
  */
-interface MutableMatrixCompanion<B> : MatrixCompanion<B> {
+public interface MutableMatrixCompanion<B> : MatrixCompanion<B> {
     override fun <T : B> invoke(original: Matrix<T>): MutableMatrix<T>
     override fun <T : B> invoke(width: Int, height: Int, initValue: T): MutableMatrix<T>
     override operator fun <T : B> invoke(

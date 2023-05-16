@@ -7,16 +7,21 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * Helper base class for array based int matrices.
  * @suppress
  */
-abstract class ArrayMutableBooleanMatrixBase internal constructor(
+public abstract class ArrayMutableBooleanMatrixBase internal constructor(
     final override val maxWidth: Int,
     protected val data: BooleanArray
 ) : AbstractMutableSparseMatrix<Boolean>(), MutableSparseBooleanMatrix {
+
+    init {
+        require(data.size % maxWidth == 0) { "The data size is not a multiple of the width" }
+    }
+
     final override val maxHeight: Int = data.size / maxWidth
 
-    constructor(maxWidth: Int, maxHeight: Int) :
+    public constructor(maxWidth: Int, maxHeight: Int) :
             this(maxWidth, BooleanArray(maxWidth * maxHeight))
 
-    fun toFlatArray(): BooleanArray {
+    public fun toFlatArray(): BooleanArray {
         return data.copyOf()
     }
 

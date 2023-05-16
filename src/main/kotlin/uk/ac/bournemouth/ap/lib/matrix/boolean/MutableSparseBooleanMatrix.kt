@@ -6,7 +6,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
 /**
  * A mutable sparse matrix for Booleans. This interface supports mutating the values.
  */
-interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<Boolean> {
+public interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<Boolean> {
     override fun copyOf(): MutableSparseBooleanMatrix
 
     override fun contentEquals(other: SparseMatrix<*>): Boolean
@@ -14,13 +14,13 @@ interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : MutableSparseMatrixCompanion<Boolean> {
+    public companion object : MutableSparseMatrixCompanion<Boolean> {
         override fun <T : Boolean> invoke(original: SparseMatrix<T>): MutableSparseMatrix<T> {
             @Suppress("UNCHECKED_CAST")
             return invoke(source = original) as MutableSparseMatrix<T>
         }
 
-        operator fun invoke(source: SparseMatrix<Boolean>): MutableSparseBooleanMatrix =
+        public operator fun invoke(source: SparseMatrix<Boolean>): MutableSparseBooleanMatrix =
             when (source) {
                 is BooleanMatrix -> ArrayMutableBooleanMatrix(source)
                 else -> ArrayMutableSparseBooleanMatrix(
@@ -51,7 +51,7 @@ interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<
          * @param maxHeight Height of the matrix
          * @param init The function initializing the matrix
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             init: SparseMatrix.SparseInit<Boolean>.(Int, Int) -> SparseMatrix.SparseValue<Boolean>
@@ -91,7 +91,7 @@ interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<
          * @param maxHeight Height of the matrix
          * @param validator Function that determines which cells are part of the matrix
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             validator: (Int, Int) -> Boolean
@@ -107,7 +107,7 @@ interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<
          * @param initValue The initial value for the elements
          * @param validator The function that determines whether a given cell is valid.
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             initValue: Boolean,
@@ -136,7 +136,7 @@ interface MutableSparseBooleanMatrix : SparseBooleanMatrix, MutableSparseMatrix<
          * @param init The function initializing the matrix
          * @param validator The function that determines whether a given cell is valid.
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

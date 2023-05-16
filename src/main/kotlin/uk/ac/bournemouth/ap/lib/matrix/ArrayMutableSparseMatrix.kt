@@ -3,7 +3,7 @@ package uk.ac.bournemouth.ap.lib.matrix
 /**
  * Implementation of a [MutableSparseMatrix] based upon an array to store the data.
  */
-class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
+public class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
     SparseMatrix<T> {
 
     override val validator: (Int, Int) -> Boolean
@@ -24,7 +24,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
      * @param initValue The initial value for all cells
      * @param validator The function used to determine whether a cell is used in the matrix.
      */
-    constructor(maxWidth: Int, maxHeight: Int, initValue: T, validator: (Int, Int) -> Boolean) :
+    public constructor(maxWidth: Int, maxHeight: Int, initValue: T, validator: (Int, Int) -> Boolean) :
             super(maxWidth, maxHeight, initValue) {
         this.validator = validator
     }
@@ -33,7 +33,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
      * Create a new instance that is a copy of the original matrix. This will be a shallow copy as
      * in the elements will not be copied.
      */
-    constructor(original: ArrayMutableSparseMatrix<T>) : super(original) {
+    public constructor(original: ArrayMutableSparseMatrix<T>) : super(original) {
         this.validator = original.validator
     }
 
@@ -45,7 +45,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
 
         /**
          * Create a new [ArrayMutableSparseMatrix] instance with the given parameters.
@@ -56,7 +56,7 @@ class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
          * @param init Inline function used to initialize the data
          * @return The newly created matrix
          */
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

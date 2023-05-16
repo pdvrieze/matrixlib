@@ -9,7 +9,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * @property maxHeight The height of the matrix
  * @param dataFunctions object that provides access to the actual data.
  */
-class FunSparseMatrix<T> private constructor(
+public class FunSparseMatrix<T> private constructor(
     override val maxWidth: Int,
     override val maxHeight: Int,
     private val dataFunctions: DataAccess<T>
@@ -20,7 +20,7 @@ class FunSparseMatrix<T> private constructor(
      * This is somewhat more efficient in the case that [valueFun] is expensive as [validator] is
      * called separately.
      */
-    constructor(
+    public constructor(
         maxWidth: Int,
         maxHeight: Int,
         validator: (Int, Int) -> Boolean,
@@ -31,7 +31,7 @@ class FunSparseMatrix<T> private constructor(
      * Constructor where validity and value are determined by the same underlying function. Note
      * that valueFun is always called, results are not cached.
      */
-    constructor(
+    public constructor(
         maxWidth: Int,
         maxHeight: Int,
         valueFun: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
@@ -52,7 +52,7 @@ class FunSparseMatrix<T> private constructor(
         return FunSparseMatrix(maxWidth, maxHeight, dataFunctions)
     }
 
-    fun <R> map(transform: (T) -> R): FunSparseMatrix<R> {
+    public fun <R> map(transform: (T) -> R): FunSparseMatrix<R> {
         return FunSparseMatrix(maxWidth, maxHeight, dataFunctions.map(transform))
     }
 

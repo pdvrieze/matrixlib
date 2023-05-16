@@ -11,12 +11,12 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.validate
  * exposes the underlying data format. Note that sparse locations are fixed and cannot be changed
  * after the fact.
  */
-class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
+public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
     override val maxWidth: Int,
     private val data: Array<Any?>
 ) : MutableSparseMatrix<T> {
 
-    override val maxHeight get() = data.size / maxWidth
+    override val maxHeight: Int get() = data.size / maxWidth
 
     override val validator: (Int, Int) -> Boolean =
         { x, y -> data[x + y * maxWidth] != ArraySparseMatrix.SPARSE_CELL }
@@ -31,7 +31,7 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
      * @param initValue The initial value for all cells
      * @param validator The function used to determine whether a cell is used in the matrix.
      */
-    constructor(maxWidth: Int, maxHeight: Int, initValue: T, validator: (Int, Int) -> Boolean) :
+    public constructor(maxWidth: Int, maxHeight: Int, initValue: T, validator: (Int, Int) -> Boolean) :
             this(maxWidth,
                 Array(maxWidth * maxHeight) {
                     val x = it % maxWidth
@@ -46,16 +46,17 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
      * Create a new instance that is a copy of the original matrix. This will be a shallow copy as
      * in the elements will not be copied.
      */
-    constructor(original: CompactArrayMutableSparseMatrix<T>) : this(
+    public constructor(original: CompactArrayMutableSparseMatrix<T>) : this(
         original.maxWidth,
         original.data.copyOf()
     )
 
     /**
      * A constructor that creates a new [CompactArrayMutableSparseMatrix] given a matrix of
-     * [SparseValue]s. Those are used to initialize the matrix.
+     * [SparseMatrix.SparseValue](SparseValue)s. Those are used to initialize the matrix.
+     * @param source The matrix to get values from.
      */
-    constructor(source: Matrix<SparseMatrix.SparseValue<T>>) : this(
+    public constructor(source: Matrix<SparseMatrix.SparseValue<T>>) : this(
         source.maxWidth,
         Array(source.width * source.height) { i ->
             val v = source[i % source.width, i / source.height]
@@ -78,6 +79,7 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
             throw IndexOutOfBoundsException("($x, $y) is a sparse index")
         }
 
+        @Suppress("UNCHECKED_CAST")
         return v as T
     }
 
@@ -108,7 +110,7 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object {
+    public companion object {
 
         /**
          * Factory function that creates and initializes a compact mutable sparse matrix.
@@ -121,7 +123,7 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
          * @param validator Function that determines whether a particular location is valid or not.
          * @param init Function that determines the initial value for a location.
          */
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             maxWidth: Int,
             maxHeight: Int,
             validator: (Int, Int) -> Boolean,
@@ -148,7 +150,7 @@ class CompactArrayMutableSparseMatrix<T> @PublishedApi internal constructor(
          * @param maxHeight The maximum height allowed in the matrix
          * @param init Function that determines the initial value for a location.
          */
-        inline operator fun <T> invoke(
+        public inline operator fun <T> invoke(
             maxWidth: Int,
             maxHeight: Int,
             init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>

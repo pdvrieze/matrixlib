@@ -9,7 +9,7 @@ import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
  * @property value The value for each valid cell
  * @property validator The function that determines which cells are valid (not sparse)
  */
-class SingleValueBooleanMatrix(width: Int, height: Int, value: Boolean) :
+public class SingleValueBooleanMatrix(width: Int, height: Int, value: Boolean) :
     SingleValueMatrix<Boolean>(width, height, value), BooleanMatrix {
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): BooleanArray = BooleanArray(width * height) { value }

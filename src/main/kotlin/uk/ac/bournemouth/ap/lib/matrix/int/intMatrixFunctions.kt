@@ -13,7 +13,7 @@ import uk.ac.bournemouth.ap.lib.matrix.forEachIndex
  * @receiver The matrix to use as basis
  * @param transform the function used to determine the new value
  */
-inline fun <T> Matrix<T>.mapInt(transform: (T) -> Int): IntMatrix {
+public inline fun <T> Matrix<T>.mapInt(transform: (T) -> Int): IntMatrix {
     return IntMatrix(width, height) { x, y -> transform(get(x, y)) }
 }
 
@@ -24,7 +24,7 @@ inline fun <T> Matrix<T>.mapInt(transform: (T) -> Int): IntMatrix {
  * @receiver The matrix to use as basis
  * @param transform the function used to determine the new value
  */
-inline fun IntMatrix.mapInt(transform: (Int) -> Int): IntMatrix {
+public inline fun IntMatrix.mapInt(transform: (Int) -> Int): IntMatrix {
     return IntMatrix(width, height) { x, y -> transform(get(x, y)) }
 }
 
@@ -35,7 +35,7 @@ inline fun IntMatrix.mapInt(transform: (Int) -> Int): IntMatrix {
  * @receiver The matrix to use as basis
  * @param transform the function used to determine the new value
  */
-inline fun <T> SparseMatrix<T>.mapInt(transform: (T) -> Int): SparseIntMatrix = when {
+public inline fun <T> SparseMatrix<T>.mapInt(transform: (T) -> Int): SparseIntMatrix = when {
     validator == Matrix.VALIDATOR ||
             this is IntMatrix ->
         MutableIntMatrix(maxWidth, maxHeight).also { it.fill { x, y -> transform(get(x, y)) } }
@@ -64,14 +64,14 @@ inline fun <T> SparseMatrix<T>.mapInt(transform: (T) -> Int): SparseIntMatrix = 
  * @receiver The matrix to use as basis
  * @param transform the function used to determine the new value
  */
-inline fun <R> IntMatrix.mapInt(transform: (Int) -> R): Matrix<R> {
+public inline fun <R> IntMatrix.mapInt(transform: (Int) -> R): Matrix<R> {
     return MutableMatrix(width, height) { x, y -> transform(get(x, y)) }
 }
 
 /**
- * Helper function to set values into a [MutableIntSparseMatrix].
+ * Helper function to set values into a [MutableSparseIntMatrix].
  */
-inline fun MutableSparseIntMatrix.fill(setter: (Int, Int) -> Int) {
+public inline fun MutableSparseIntMatrix.fill(setter: (Int, Int) -> Int) {
     for ((x, y) in indices) {
         this[x, y] = setter(x, y)
     }
@@ -81,63 +81,63 @@ inline fun MutableSparseIntMatrix.fill(setter: (Int, Int) -> Int) {
  * Element-wise addition of two matrices. It requires the [other] matrix to be strictly larger
  * than the left side matrix. The result is a matrix of the size of the receiver.
  */
-operator fun IntMatrix.plus(other: Int): IntMatrix =
+public operator fun IntMatrix.plus(other: Int): IntMatrix =
     IntMatrix(width, height) { x, y -> get(x, y) + other }
 
 /**
  * Element-wise subtraction of two matrices. It requires the [other] matrix to be strictly larger
  * than the left side matrix. The result is a matrix of the size of the receiver.
  */
-operator fun IntMatrix.minus(other: Int): IntMatrix =
+public operator fun IntMatrix.minus(other: Int): IntMatrix =
     IntMatrix(width, height) { x, y -> get(x, y) - other }
 
 /**
  * Element-wise division of two matrices. It requires the [other] matrix to be strictly larger
  * than the left side matrix. The result is a matrix of the size of the receiver.
  */
-operator fun IntMatrix.div(other: Int): IntMatrix =
+public operator fun IntMatrix.div(other: Int): IntMatrix =
     IntMatrix(width, height) { x, y -> get(x, y) / other }
 
 /**
  * Element-wise remainder of two matrices. It requires the [other] matrix to be strictly larger
  * than the left side matrix. The result is a matrix of the size of the receiver.
  */
-operator fun IntMatrix.rem(other: Int): IntMatrix =
+public operator fun IntMatrix.rem(other: Int): IntMatrix =
     IntMatrix(width, height) { x, y -> get(x, y) % other }
 
 /**
  * Element-wise addition of two matrices into the receiver. It requires the [other] matrix to be
  * strictly larger than the left side matrix.
  */
-operator fun MutableIntMatrix.plusAssign(other: Int) =
+public operator fun MutableIntMatrix.plusAssign(other: Int): Unit =
     forEachIndex { x, y -> set(x, y, get(x, y) + other) }
 
 /**
  * Element-wise subtraction of two matrices into the receiver. It requires the [other] matrix to be
  * strictly larger than the left side matrix.
  */
-operator fun MutableIntMatrix.minusAssign(other: Int) =
+public operator fun MutableIntMatrix.minusAssign(other: Int): Unit =
     forEachIndex { x, y -> set(x, y, get(x, y) - other) }
 
 /**
  * Element-wise division of two matrices into the receiver. It requires the [other] matrix to be
  * strictly larger than the left side matrix.
  */
-operator fun MutableIntMatrix.divAssign(other: Int) =
+public operator fun MutableIntMatrix.divAssign(other: Int): Unit =
     forEachIndex { x, y -> set(x, y, get(x, y) / other) }
 
 /**
  * Element-wise remainder of two matrices into the receiver. It requires the [other] matrix to be
  * strictly larger than the left side matrix.
  */
-operator fun MutableIntMatrix.remAssign(other: Int) =
+public operator fun MutableIntMatrix.remAssign(other: Int): Unit =
     forEachIndex { x, y -> set(x, y, get(x, y) % other) }
 
 /**
  * Multiply the two matrices (using matrix multiplication). This requires the width of the left matrix to be equal to the height of
  * the right matrix.
  */
-operator fun IntMatrix.times(other: IntMatrix): IntMatrix {
+public operator fun IntMatrix.times(other: IntMatrix): IntMatrix {
     if (width != other.height) throw IllegalArgumentException("Matrix multiplication requires the width of the first operand to match the height of the second")
     val common = width
     return IntMatrix(other.width, height) { x, y ->

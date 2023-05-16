@@ -8,10 +8,10 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMatrix
  * @property height The height of the matrix
  * @property valueFun The function that determines the value of a cell
  */
-class FunMatrix<T>(
+public class FunMatrix<T>(
     override val width: Int,
     override val height: Int,
-    val valueFun: (Int, Int) -> T
+    public val valueFun: (Int, Int) -> T
 ) : AbstractMatrix<T>() {
     override fun doGet(x: Int, y: Int): T {
         return valueFun(x, y)
@@ -21,7 +21,7 @@ class FunMatrix<T>(
         return FunMatrix(width, height, valueFun)
     }
 
-    fun <R> map(transform: (T) -> R): FunMatrix<R> {
+    public fun <R> map(transform: (T) -> R): FunMatrix<R> {
         return FunMatrix(width, height) { x, y -> transform(valueFun(x, y)) }
     }
 

@@ -27,7 +27,7 @@ tasks.test {
 }
 
 kotlin {
-//    explicitApi()
+    explicitApi()
     target {
         mavenPublication {
             version = project.version as String

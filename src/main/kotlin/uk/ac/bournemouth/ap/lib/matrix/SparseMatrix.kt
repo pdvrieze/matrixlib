@@ -10,52 +10,55 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.SparseMatrixIndices
  * read-only type. The writable version is [MutableSparseMatrix]. The minimum coordinate is always
  * 0. This implements [Iterable] to allow you to get all values (this relies on [isValid]).
  */
-interface SparseMatrix<out T> : Iterable<T> {
+public interface SparseMatrix<out T> : Iterable<T> {
     /** The maximum x coordinate that is valid which can be stored. */
-    val maxWidth: Int
+    public val maxWidth: Int
 
     /** The maximum x coordinate that is valid */
-    val maxHeight: Int
+    public val maxHeight: Int
 
     /**
      * This function can be used to determine whether the given coordinates are valid. Returns
      * true if valid. This function works on any value for the coordinates and should return `false`
      * for all values out of range (`x<0 || x>=[maxWidth]`), (`y<0 || y>=[maxHeight]`).
      */
-    fun isValid(x: Int, y: Int): Boolean {
+    public fun isValid(x: Int, y: Int): Boolean {
         return x in 0 until maxWidth &&
                 y in 0 until maxHeight &&
                 validator(x, y)
     }
 
     /**
-     * Helper function that implements [SparseMatrix.isValid] for coordinates
+     * This function can be used to determine whether the given coordinates are valid. Returns
+     * true if valid. This function works on any value for the coordinates and should return `false`
+     * for all values out of range (`x<0 || x>=[maxWidth]`), (`y<0 || y>=[maxHeight]`).
      */
-    fun <T> isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
+    public fun <T> isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
 
     /**
      * Whatever the actual type, allow them to be read to read any value. Implementations are
      * expected to use more precise return types.
      */
-    operator fun get(x: Int, y: Int): T
+    public operator fun get(x: Int, y: Int): T
 
     /**
-     * Helper operator to get values based on a coordinate
+     * Whatever the actual type, allow them to be read to read any value. Implementations are
+     * expected to use more precise return types.
      */
-    operator fun get(pos: Coordinate): T = get(pos.x, pos.y)
+    public operator fun get(pos: Coordinate): T = get(pos.x, pos.y)
 
     /**
      * For copying allow retrieving the/a validator function
      */
-    val validator: (Int, Int) -> Boolean
+    public val validator: (Int, Int) -> Boolean
 
     /**
      * Creates a copy of the matrix of an appropriate type with the same content.
      */
-    fun copyOf(): SparseMatrix<T>
+    public fun copyOf(): SparseMatrix<T>
 
     /** Get an iterable with all valid indices in the matrix */
-    val indices: Iterable<Coordinate> get() = SparseMatrixIndices(this)
+    public val indices: Iterable<Coordinate> get() = SparseMatrixIndices(this)
 
     /**
      * Get an iterator over all elements in the (sparse) matrix.
@@ -77,7 +80,7 @@ interface SparseMatrix<out T> : Iterable<T> {
     /**
      * Get all elements in the matrix as sequence.
      */
-    fun asSequence(): Sequence<T> = object : Sequence<T> {
+    public fun asSequence(): Sequence<T> = object : Sequence<T> {
         override fun iterator(): Iterator<T> = this@SparseMatrix.iterator()
     }
 
@@ -86,7 +89,7 @@ interface SparseMatrix<out T> : Iterable<T> {
      * on the cell values. Sparse matrices with different dimensions, but the same valid indices
      * can be equal.
      */
-    fun contentEquals(other: SparseMatrix<*>): Boolean {
+    public fun contentEquals(other: SparseMatrix<*>): Boolean {
         for (x in (maxWidth + 1) until other.maxWidth) {
             for (y in 0 until other.maxHeight) {
                 if (other.isValid(x, y)) return false
@@ -132,7 +135,7 @@ interface SparseMatrix<out T> : Iterable<T> {
      * starting with the prefix, the other lines indented appropriately.
      * @suppress
      */
-    fun toString(prefix: String): String {
+    public fun toString(prefix: String): String {
         val strings: SparseMatrix<String> = map<T, String> { it.toString() }
         val maxColWidth = strings.asSequence().map { it.length }.maxOrNull() ?: 0
         val capacity = maxWidth * maxColWidth + 2
@@ -152,9 +155,9 @@ interface SparseMatrix<out T> : Iterable<T> {
     }
 
 
-    interface SparseValue<out T> {
-        val isValid: Boolean
-        val value: T
+    public interface SparseValue<out T> {
+        public val isValid: Boolean
+        public val value: T
     }
 
     /**
@@ -162,18 +165,18 @@ interface SparseMatrix<out T> : Iterable<T> {
      * either a value, or marking it sparse. It is used as receiver of the lambda, that is expected
      * to return the result of either invoking [value] or [sparse].
      */
-    abstract class SparseInit<T> internal constructor() {
+    public abstract class SparseInit<T> internal constructor() {
         /**
          * Create a wrapper representing [v] as a value.
          */
-        abstract fun value(v: T): SparseValue<T>
+        public abstract fun value(v: T): SparseValue<T>
 
         /**
          * a value that represents a sparse cell.
          */
-        abstract val sparse: SparseValue<Nothing>
+        public abstract val sparse: SparseValue<Nothing>
 
-        inline fun <I> SparseValue<I>.map(transform: (I) -> T): SparseValue<T> = when {
+        public inline fun <I> SparseValue<I>.map(transform: (I) -> T): SparseValue<T> = when {
             isValid -> value(transform(this.value))
             else -> sparse
         }
@@ -184,7 +187,7 @@ interface SparseMatrix<out T> : Iterable<T> {
      * guarantee as to the specific type returned for the interface (but always an instance of
      * [SparseMatrix]).
      */
-    companion object : ImmutableSparseMatrixCompanion<Any?> {
+    public companion object : ImmutableSparseMatrixCompanion<Any?> {
         /**
          * Create a copy of the parameter using the [`copyOf`](SparseMatrix.copyOf) member function.
          *

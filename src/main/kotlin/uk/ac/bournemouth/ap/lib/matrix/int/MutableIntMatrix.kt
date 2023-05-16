@@ -7,24 +7,24 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableMatrixCompanion
 /**
  * Interface representing a specialised mutable matrix type for storing integers.
  */
-interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<Int> {
+public interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<Int> {
     override fun copyOf(): MutableIntMatrix
 
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : MutableMatrixCompanion<Int> {
+    public companion object : MutableMatrixCompanion<Int> {
         @Suppress("UNCHECKED_CAST")
         override fun <T : Int> invoke(original: Matrix<T>): MutableMatrix<T> =
             invoke(source = original) as MutableMatrix<T>
 
-        operator fun invoke(source: Matrix<Int>): MutableIntMatrix = when (source) {
+        public operator fun invoke(source: Matrix<Int>): MutableIntMatrix = when (source) {
             is IntMatrix -> ArrayMutableIntMatrix(source)
             else -> ArrayMutableIntMatrix(source.width, source.height, source::get)
         }
 
-        operator fun invoke(source: IntMatrix): MutableIntMatrix =
+        public operator fun invoke(source: IntMatrix): MutableIntMatrix =
             ArrayMutableIntMatrix(source)
 
         /**
@@ -33,7 +33,7 @@ interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<In
          * @param width Width of the matrix
          * @param height Height of the matrix
          */
-        operator fun invoke(width: Int, height: Int): MutableIntMatrix {
+        public operator fun invoke(width: Int, height: Int): MutableIntMatrix {
             return ArrayMutableIntMatrix(width, height)
         }
 
@@ -48,7 +48,7 @@ interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<In
          * @param height Height of the matrix
          * @param initValue The initial value of the elements of the matrix
          */
-        operator fun invoke(width: Int, height: Int, initValue: Int): MutableIntMatrix {
+        public operator fun invoke(width: Int, height: Int, initValue: Int): MutableIntMatrix {
             return ArrayMutableIntMatrix(width, height).apply { fill(initValue) }
         }
 
@@ -61,7 +61,7 @@ interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<In
             return ArrayMutableIntMatrix(width, height, init) as MutableMatrix<T>
         }
 
-        inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Int):
+        public inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Int):
                 MutableIntMatrix {
             return ArrayMutableIntMatrix(width, height, init)
         }

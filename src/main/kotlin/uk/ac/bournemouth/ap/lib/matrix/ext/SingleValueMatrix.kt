@@ -8,7 +8,7 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMatrix
  * @property height The height of the matrix
  * @property value The value for each cell
  */
-open class SingleValueMatrix<T>(
+public open class SingleValueMatrix<T>(
     override val width: Int,
     override val height: Int,
     protected val value: T

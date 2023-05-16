@@ -10,7 +10,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * to be used as factory.
  * @suppress
  */
-interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
+public interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
     /**
      * Create a new [SparseMatrix] that is a copy of the original.
      *
@@ -75,7 +75,7 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
      * @param valueFun A function that provides the value at a coordinate
      * @return The functional sparse matrix
      */
-    fun <T : B> function(
+    public fun <T : B> function(
         maxWidth: Int,
         maxHeight: Int,
         validator: (Int, Int) -> Boolean,
@@ -89,7 +89,7 @@ interface ImmutableSparseMatrixCompanion<B> : SparseMatrixCompanion<B> {
      * @param maxHeight The height of the matrix
      * @param valueFun An initialization function that provides the validity/value of the sparse matrix
      */
-    fun <T : B> function(
+    public fun <T : B> function(
         maxWidth: Int,
         maxHeight: Int,
         valueFun: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>

@@ -11,17 +11,17 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
 /**
  * A mutable sparse matrix for integers. This interface supports mutating the values.
  */
-interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
+public interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
     override operator fun set(x: Int, y: Int, value: Int)
 
     override fun copyOf(): MutableSparseIntMatrix
 
-    fun contentEquals(other: SparseIntMatrix): Boolean
+    public fun contentEquals(other: SparseIntMatrix): Boolean
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : MutableSparseMatrixCompanion<Int> {
+    public companion object : MutableSparseMatrixCompanion<Int> {
         @Deprecated("This version is only there for inheritance", level = DeprecationLevel.ERROR)
         override fun <T : Int> invoke(original: SparseMatrix<T>): MutableSparseMatrix<T> {
             @Suppress("UNCHECKED_CAST")
@@ -31,7 +31,7 @@ interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
         /**
          * Create a new mutable matrix initialized from the source.
          */
-        operator fun invoke(source: SparseMatrix<Int>): MutableSparseIntMatrix =
+        public operator fun invoke(source: SparseMatrix<Int>): MutableSparseIntMatrix =
             when (source) {
                 is IntMatrix -> ArrayMutableIntMatrix(source)
                 else -> ArrayMutableSparseIntMatrix(
@@ -80,7 +80,7 @@ interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
          * @param maxHeight Height of the matrix
          * @param init The function initializing the matrix
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             init: SparseMatrix.SparseInit<Int>.(Int, Int) -> SparseMatrix.SparseValue<Int>
@@ -115,7 +115,7 @@ interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
          * @param maxHeight Height of the matrix
          * @param validator Function that determines which cells are part of the matrix
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             validator: (Int, Int) -> Boolean
@@ -126,12 +126,12 @@ interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
         /**
          * Create a [MutableSparseIntMatrix] initialized with the given value
          *
-         * @param width Width of the matrix
-         * @param height Height of the matrix
+         * @param maxWidth Width of the matrix
+         * @param maxHeight Height of the matrix
          * @param initValue The initial value for the elements
          * @param validator The function that determines whether a given cell is valid.
          */
-        operator fun invoke(
+        public operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             initValue: Int,
@@ -160,7 +160,7 @@ interface MutableSparseIntMatrix : SparseIntMatrix, MutableSparseMatrix<Int> {
          * @param init The function initializing the matrix
          * @param validator The function that determines whether a given cell is valid.
          */
-        inline operator fun invoke(
+        public inline operator fun invoke(
             maxWidth: Int,
             maxHeight: Int,
             noinline validator: (Int, Int) -> Boolean,

@@ -6,29 +6,29 @@ import uk.ac.bournemouth.ap.lib.matrix.Matrix
 /**
  * Interface representing a matrix that stores Boolean values natively.
  */
-interface BooleanMatrix : Matrix<Boolean>, SparseBooleanMatrix {
+public interface BooleanMatrix : Matrix<Boolean>, SparseBooleanMatrix {
     /**
      * This function provides access to the underlying array for copying. It should be internal.
      * @suppress
      */
-    fun toFlatArray(): BooleanArray
-    fun contentEquals(other: BooleanMatrix): Boolean
+    public fun toFlatArray(): BooleanArray
+    public fun contentEquals(other: BooleanMatrix): Boolean
     override fun copyOf(): BooleanMatrix
 
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : ImmutableMatrixCompanion<Boolean> {
+    public companion object : ImmutableMatrixCompanion<Boolean> {
         @Suppress("UNCHECKED_CAST")
         override fun <T : Boolean> invoke(original: Matrix<T>): Matrix<T> =
             invoke(source = original) as Matrix<T>
 
-        operator fun invoke(source: Matrix<Boolean>): BooleanMatrix = when (source) {
+        public operator fun invoke(source: Matrix<Boolean>): BooleanMatrix = when (source) {
             is BooleanMatrix -> ArrayMutableBooleanMatrix(source)
             else -> ArrayMutableBooleanMatrix(source.width, source.height, source::get)
         }
 
-        operator fun invoke(source: BooleanMatrix): BooleanMatrix =
+        public operator fun invoke(source: BooleanMatrix): BooleanMatrix =
             ArrayMutableBooleanMatrix(source)
 
         @Suppress("UNCHECKED_CAST")
@@ -42,7 +42,7 @@ interface BooleanMatrix : Matrix<Boolean>, SparseBooleanMatrix {
          * @param height Height of the matrix
          * @param initValue The value of all cells
          */
-        operator fun invoke(width: Int, height: Int, initValue: Boolean): BooleanMatrix {
+        public operator fun invoke(width: Int, height: Int, initValue: Boolean): BooleanMatrix {
             return SingleValueBooleanMatrix(width, height, initValue)
         }
 
@@ -62,7 +62,7 @@ interface BooleanMatrix : Matrix<Boolean>, SparseBooleanMatrix {
          * @param height Height of the matrix
          * @param init Function used to initialise each cell.
          */
-        inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
+        public inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
                 BooleanMatrix {
             return ArrayMutableBooleanMatrix(width, height, init)
         }

@@ -9,7 +9,7 @@ import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueSparseMatrix
  * @property value The value for each valid cell
  * @property validator The function that determines which cells are valid (not sparse)
  */
-class SingleValueSparseBooleanMatrix(
+public class SingleValueSparseBooleanMatrix(
     maxWidth: Int, maxHeight: Int, value: Boolean,
     override val validator: (Int, Int) -> Boolean
 ) : SingleValueSparseMatrix<Boolean>(maxWidth, maxHeight, value, validator), SparseBooleanMatrix {

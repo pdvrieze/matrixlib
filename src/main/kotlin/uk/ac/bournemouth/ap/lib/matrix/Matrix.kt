@@ -9,23 +9,23 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MatrixIndices
 /**
  * A matrix type (based upon [SparseMatrix]) but it has values at all coordinates.
  */
-interface Matrix<out T> : SparseMatrix<T> {
+public interface Matrix<out T> : SparseMatrix<T> {
 
     /** The width of the matrix. This is effectively the same as [maxWidth]. */
-    val width: Int get() = maxWidth
+    public val width: Int get() = maxWidth
 
     /** The height of the matrix. This is effectively the same as [maxWidth]. */
-    val height: Int get() = maxHeight
+    public val height: Int get() = maxHeight
 
     /**
      * The indices of all columns in the matrix
      */
-    val columnIndices: IntRange get() = 0 until width
+    public val columnIndices: IntRange get() = 0 until width
 
     /**
      * The indices of all rows in the matrix
      */
-    val rowIndices: IntRange get() = 0 until height
+    public val rowIndices: IntRange get() = 0 until height
 
     /**
      * Specialised version of indices that doesn't check validity.
@@ -58,15 +58,9 @@ interface Matrix<out T> : SparseMatrix<T> {
      * on the cell values. Sparse matrices with different dimensions, but the same valid indices
      * can be equal.
      */
-    fun contentEquals(other: Matrix<*>): Boolean {
+    public fun contentEquals(other: Matrix<*>): Boolean {
         if (width != other.width || height != other.height) return false
-
-        for (col in 0 until width) {
-            for (row in 0 until height) {
-                if (get(col, row) != other.get(col, row)) return false
-            }
-        }
-        return true
+        return indices.all { c -> get(c) == other.get(c) }
     }
 
     override val validator: (Int, Int) -> Boolean
@@ -77,7 +71,7 @@ interface Matrix<out T> : SparseMatrix<T> {
      * guarantee as to the specific type returned for the interface (but always an instance of
      * [Matrix]).
      */
-    companion object : ImmutableMatrixCompanion<Any?> {
+    public companion object : ImmutableMatrixCompanion<Any?> {
         /**
          * Create a copy of the parameter using the [`copyOf`](Matrix.copyOf) member function.
          *

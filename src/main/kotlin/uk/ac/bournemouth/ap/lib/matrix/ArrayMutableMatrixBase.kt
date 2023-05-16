@@ -12,7 +12,7 @@ import java.util.function.Consumer
  * @property maxWidth The maximum width of the matrix
  * @property data The actual array to get the data
  */
-abstract class ArrayMutableMatrixBase<T> protected constructor(
+public abstract class ArrayMutableMatrixBase<T> protected constructor(
     override val maxWidth: Int,
     internal val data: Array<T?>
 ) : AbstractMutableSparseMatrix<T>() {

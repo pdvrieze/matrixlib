@@ -7,7 +7,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
  * A map implementation that creates a boolean matrix based upon the receiver and the transformation
  * function.
  */
-inline fun <T> Matrix<T>.mapBoolean(transform: (T) -> Boolean): BooleanMatrix {
+public inline fun <T> Matrix<T>.mapBoolean(transform: (T) -> Boolean): BooleanMatrix {
     return BooleanMatrix(width, height) { x, y -> transform(get(x, y)) }
 }
 
@@ -15,10 +15,9 @@ inline fun <T> Matrix<T>.mapBoolean(transform: (T) -> Boolean): BooleanMatrix {
  * A map implementation that creates a boolean sparse matrix based upon the receiver and the
  * transformation function.
  */
-inline fun <T> SparseMatrix<T>.mapBoolean(transform: (T) -> Boolean): SparseBooleanMatrix = when {
+public inline fun <T> SparseMatrix<T>.mapBoolean(transform: (T) -> Boolean): SparseBooleanMatrix = when {
     validator == Matrix.VALIDATOR || this is Matrix ->
         MutableBooleanMatrix(maxWidth, maxHeight) { x, y -> transform(get(x, y)) }
-
 
     else -> MutableSparseBooleanMatrix(
         maxWidth,
@@ -29,7 +28,7 @@ inline fun <T> SparseMatrix<T>.mapBoolean(transform: (T) -> Boolean): SparseBool
 }
 
 @PublishedApi
-internal fun <T> SparseMatrix<T>.getValidator() = when (this) {
+internal fun <T> SparseMatrix<T>.getValidator(): (Int, Int) -> Boolean = when (this) {
     is ArrayMutableSparseBooleanMatrix -> validator
     else -> { x, y -> isValid(x, y) }
 }
@@ -37,7 +36,7 @@ internal fun <T> SparseMatrix<T>.getValidator() = when (this) {
 /**
  * Helper function to set values into a [MutableSparseBooleanMatrix].
  */
-inline fun MutableSparseBooleanMatrix.fill(setter: (Int, Int) -> Boolean) {
+public inline fun MutableSparseBooleanMatrix.fill(setter: (Int, Int) -> Boolean) {
     for ((x, y) in indices) {
         this[x, y] = setter(x, y)
     }

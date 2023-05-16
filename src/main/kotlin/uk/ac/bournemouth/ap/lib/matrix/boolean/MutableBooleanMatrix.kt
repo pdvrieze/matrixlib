@@ -8,7 +8,7 @@ import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
 /**
  * Interface representing a mutable matrix containing specialised for boolean values.
  */
-interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, MutableMatrix<Boolean> {
+public interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, MutableMatrix<Boolean> {
     override fun copyOf(): MutableBooleanMatrix
 
     override fun contentEquals(other: SparseMatrix<*>): Boolean {
@@ -18,17 +18,17 @@ interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, Muta
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */
-    companion object : MutableMatrixCompanion<Boolean> {
+    public companion object : MutableMatrixCompanion<Boolean> {
         @Suppress("UNCHECKED_CAST")
         override fun <T : Boolean> invoke(original: Matrix<T>): MutableMatrix<T> =
             invoke(source = original) as MutableMatrix<T>
 
-        operator fun invoke(source: Matrix<Boolean>): MutableBooleanMatrix = when (source) {
+        public operator fun invoke(source: Matrix<Boolean>): MutableBooleanMatrix = when (source) {
             is BooleanMatrix -> ArrayMutableBooleanMatrix(source)
             else -> ArrayMutableBooleanMatrix(source.width, source.height, source::get)
         }
 
-        operator fun invoke(source: BooleanMatrix): MutableBooleanMatrix =
+        public operator fun invoke(source: BooleanMatrix): MutableBooleanMatrix =
             ArrayMutableBooleanMatrix(source)
 
         /**
@@ -37,7 +37,7 @@ interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, Muta
          * @param width Width of the matrix
          * @param height Height of the matrix
          */
-        operator fun invoke(width: Int, height: Int): MutableBooleanMatrix {
+        public operator fun invoke(width: Int, height: Int): MutableBooleanMatrix {
             return ArrayMutableBooleanMatrix(width, height)
         }
 
@@ -52,7 +52,7 @@ interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, Muta
          * @param height Height of the matrix
          * @param initValue The initial value of the elements of the matrix
          */
-        operator fun invoke(width: Int, height: Int, initValue: Boolean): MutableBooleanMatrix {
+        public operator fun invoke(width: Int, height: Int, initValue: Boolean): MutableBooleanMatrix {
             return ArrayMutableBooleanMatrix(width, height, initValue)
         }
 
@@ -65,7 +65,7 @@ interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatrix, Muta
             return invoke(width, height, init) as MutableMatrix<T>
         }
 
-        inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
+        public inline operator fun invoke(width: Int, height: Int, init: (Int, Int) -> Boolean):
                 MutableBooleanMatrix {
             return ArrayMutableBooleanMatrix(width, height, init)
         }
