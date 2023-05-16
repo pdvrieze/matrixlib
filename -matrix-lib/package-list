@@ -89,11 +89,6 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix.boolean/SparseBooleanMatrix.Comp
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.boolean/SparseBooleanMatrix///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.boolean/-sparse-boolean-matrix/index.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.boolean/SparseBooleanMatrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.boolean/-sparse-boolean-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext////PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/index.html
-$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext//get/uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[TypeParam(bounds=[kotlin.Any?])]#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/get.html
-$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext//indices/uk.ac.bournemouth.ap.lib.matrix.Matrix[*]#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/indices.html
-$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext//indices/uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[*]#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/indices.html
-$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext//isValid/uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[TypeParam(bounds=[kotlin.Any?])]#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/is-valid.html
-$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext//set/uk.ac.bournemouth.ap.lib.matrix.MutableSparseMatrix[TypeParam(bounds=[kotlin.Any?])]#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/set.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/Coordinate///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/index.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/Coordinate/Coordinate/#kotlin.Int#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/-coordinate.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/Coordinate/Coordinate/#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-coordinate/-coordinate.html
@@ -107,6 +102,7 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix///PointingToDeclar
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/FunMatrix/#kotlin.Int#kotlin.Int#kotlin.Function2[kotlin.Int,kotlin.Int,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/-fun-matrix.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/height/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/height.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/map/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/map.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/valueFun/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/value-fun.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunMatrix/width/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-matrix/width.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/index.html
@@ -114,6 +110,7 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/FunSparseMat
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/FunSparseMatrix/#kotlin.Int#kotlin.Int#kotlin.Function3[uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseInit[TypeParam(bounds=[kotlin.Any?])],kotlin.Int,kotlin.Int,uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseValue[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/-fun-sparse-matrix.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/get/#kotlin.Int#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/get.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/map/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/map.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/maxHeight/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/max-height.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/maxWidth/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/max-width.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix.ext/FunSparseMatrix/validator/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix.ext/-fun-sparse-matrix/validator.html
@@ -298,6 +295,7 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/contentEquals/#uk.ac.bour
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/contentEquals/#uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[*]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/content-equals.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/height/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/height.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/indices/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/indices.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/isValid/#kotlin.Int#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/is-valid.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/rowIndices/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/row-indices.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/Matrix/validator/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-matrix/validator.html
@@ -318,6 +316,7 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix/MutableSparseMatrix///PointingTo
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/MutableSparseMatrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-mutable-sparse-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/MutableSparseMatrix/fill/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-mutable-sparse-matrix/fill.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/MutableSparseMatrix/set/#kotlin.Int#kotlin.Int#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-mutable-sparse-matrix/set.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/MutableSparseMatrix/set/#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-mutable-sparse-matrix/set.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-companion/index.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion/fromSparseValueMatrix/#uk.ac.bournemouth.ap.lib.matrix.Matrix[uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseValue[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-companion/from-sparse-value-matrix.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion/invoke/#kotlin.Int#kotlin.Int#TypeParam(bounds=[kotlin.Any?])#kotlin.Function2[kotlin.Int,kotlin.Int,kotlin.Boolean]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-companion/invoke.html
@@ -325,6 +324,7 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion/invoke/#k
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion/invoke/#kotlin.Int#kotlin.Int#kotlin.Function3[uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseInit[TypeParam(bounds=[kotlin.Any?])],kotlin.Int,kotlin.Int,uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseValue[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-companion/invoke.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.Companion/invoke/#uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-companion/invoke.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.SparseInit///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-sparse-init/index.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.SparseInit/map/uk.ac.bournemouth.ap.lib.matrix.SparseMatrix.SparseValue[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-sparse-init/map.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.SparseInit/sparse/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-sparse-init/sparse.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.SparseInit/value/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-sparse-init/value.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix.SparseValue///PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/-sparse-value/index.html
@@ -335,7 +335,10 @@ $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/asSequence/#/Pointi
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/contentEquals/#uk.ac.bournemouth.ap.lib.matrix.SparseMatrix[*]/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/content-equals.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/copyOf/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/copy-of.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/get/#kotlin.Int#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/get.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/get/#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/get.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/indices/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/indices.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/isValid/#kotlin.Int#kotlin.Int/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/is-valid.html
+$dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/isValid/#uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/is-valid.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/iterator/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/iterator.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/maxHeight/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/max-height.html
 $dokka.location:uk.ac.bournemouth.ap.lib.matrix/SparseMatrix/maxWidth/#/PointingToDeclaration/-matrix-lib/uk.ac.bournemouth.ap.lib.matrix/-sparse-matrix/max-width.html
