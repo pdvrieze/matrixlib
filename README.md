@@ -12,7 +12,7 @@ The library is a Kotlin only module targeting the JVM/Android.
 ### Add dependency
 ```kotlin
 dependencies {
-    implementation("io.github.pdvrieze.matrixlib:matrixlib:1.0")
+    implementation("io.github.pdvrieze.matrixlib:matrixlib:1.0.1")
 }
 ```
 
