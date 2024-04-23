@@ -1,5 +1,6 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import java.util.*
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.kotlinJvm)
@@ -13,10 +14,15 @@ plugins {
 description = "Support library for working with 2D matrices. This includes matrices with gaps."
 
 group = "io.github.pdvrieze.matrixlib"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
@@ -29,6 +35,11 @@ tasks.test {
 
 kotlin {
     explicitApi()
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_1_8
+        languageVersion = KotlinVersion.KOTLIN_1_9
+        apiVersion = KotlinVersion.KOTLIN_1_8
+    }
     target {
         mavenPublication {
             version = project.version as String
@@ -41,6 +52,9 @@ val javadocJar by tasks.registering(Jar::class) {
     from(tasks.named("dokkaJavadoc"))
 }
 
+apiValidation {
+
+}
 
 tasks.withType<DokkaTask> {
     moduleName.set("MatrixLib")
