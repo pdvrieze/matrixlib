@@ -11,6 +11,7 @@ import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
  */
 public class SingleValueBooleanMatrix(width: Int, height: Int, value: Boolean) :
     SingleValueMatrix<Boolean>(width, height, value), BooleanMatrix {
+    @Suppress("DeprecatedCallableAddReplaceWith")
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): BooleanArray = BooleanArray(width * height) { value }
 

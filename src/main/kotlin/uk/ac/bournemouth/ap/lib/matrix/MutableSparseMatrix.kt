@@ -136,7 +136,7 @@ public interface MutableSparseMatrix<T> : SparseMatrix<T> {
             maxHeight: Int,
             init: SparseMatrix.SparseInit<T>.(Int, Int) -> SparseMatrix.SparseValue<T>
         ): MutableSparseMatrix<T> {
-            return CompactArrayMutableSparseMatrix<T>(maxWidth, maxHeight, init)
+            return CompactArrayMutableSparseMatrix(maxWidth, maxHeight, init)
         }
 
         /**

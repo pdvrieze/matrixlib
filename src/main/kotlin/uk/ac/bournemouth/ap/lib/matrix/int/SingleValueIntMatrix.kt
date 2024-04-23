@@ -12,6 +12,7 @@ import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
  */
 public class SingleValueIntMatrix(width: Int, height: Int, value: Int) :
     SingleValueMatrix<Int>(width, height, value), IntMatrix {
+    @Suppress("DeprecatedCallableAddReplaceWith")
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): IntArray = IntArray(width * height) { value }
 
