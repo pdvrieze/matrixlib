@@ -33,7 +33,7 @@ public interface SparseMatrix<out T> : Iterable<T> {
      * true if valid. This function works on any value for the coordinates and should return `false`
      * for all values out of range (`x<0 || x>=[maxWidth]`), (`y<0 || y>=[maxHeight]`).
      */
-    public fun <T> isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
+    public fun isValid(pos: Coordinate): Boolean = isValid(pos.x, pos.y)
 
     /**
      * Whatever the actual type, allow them to be read to read any value. Implementations are
