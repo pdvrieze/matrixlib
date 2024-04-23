@@ -1,3 +1,4 @@
+import kotlinx.validation.ExperimentalBCVApi
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
@@ -39,6 +40,7 @@ kotlin {
         jvmTarget = JvmTarget.JVM_1_8
         languageVersion = KotlinVersion.KOTLIN_1_9
         apiVersion = KotlinVersion.KOTLIN_1_8
+        freeCompilerArgs.add("-Xjvm-default=all")
     }
     target {
         mavenPublication {
@@ -53,7 +55,10 @@ val javadocJar by tasks.registering(Jar::class) {
 }
 
 apiValidation {
-
+    @OptIn(ExperimentalBCVApi::class)
+    klib {
+        enabled = true
+    }
 }
 
 tasks.withType<DokkaTask> {
