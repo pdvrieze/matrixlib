@@ -51,7 +51,7 @@ public interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
             height: Int,
             init: (Int, Int) -> T
         ): MutableMatrix<T> {
-            return ArrayMutableMatrix<T>(width, height, init)
+            return ArrayMutableMatrix(width, height, init = init)
         }
 
     }

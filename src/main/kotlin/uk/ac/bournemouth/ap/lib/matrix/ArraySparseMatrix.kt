@@ -17,12 +17,12 @@ public class ArraySparseMatrix<T> @PublishedApi internal constructor(
     override val maxHeight: Int = data.size / width
 
     override val validator: (Int, Int) -> Boolean =
-        { x, y -> data[x + y * maxWidth] != SPARSE_CELL }
+        { x, y -> data[x + y * maxWidth] != SparseCell }
 
     override fun isValid(x: Int, y: Int): Boolean {
         return x in 0 until maxWidth &&
                 y in 0 until maxHeight &&
-                data[x + y * maxWidth] != SPARSE_CELL
+                data[x + y * maxWidth] != SparseCell
     }
 
     override fun doGet(x: Int, y: Int): T {
@@ -35,7 +35,7 @@ public class ArraySparseMatrix<T> @PublishedApi internal constructor(
      */
     override fun forEach(action: Consumer<in T>) {
         for(element in data) {
-            if (element != SPARSE_CELL) {
+            if (element != SparseCell) {
                 @Suppress("UNCHECKED_CAST")
                 action.accept(element as T)
             }
@@ -44,14 +44,14 @@ public class ArraySparseMatrix<T> @PublishedApi internal constructor(
 
     override fun copyOf(): SparseMatrix<T> = ArraySparseMatrix(data, maxWidth)
 
-    internal object SPARSE_CELL : SparseMatrix.SparseValue<Nothing> {
+    internal object SparseCell : SparseMatrix.SparseValue<Nothing> {
         override val isValid: Boolean get() = false
         override val value: Nothing get() = throw IllegalStateException("Sparse cells have no value")
     }
 
     @JvmInline
     private value class Value<out T>(val content: Any?) : SparseMatrix.SparseValue<T> {
-        override val isValid: Boolean get() = content != SPARSE_CELL
+        override val isValid: Boolean get() = content != SparseCell
 
         @Suppress("UNCHECKED_CAST")
         override val value: T get() = content as T
@@ -65,7 +65,7 @@ public class ArraySparseMatrix<T> @PublishedApi internal constructor(
         private object ValueCreator : SparseMatrix.SparseInit<Any>() {
             override fun value(v: Any): SparseMatrix.SparseValue<Any> = Value(v)
 
-            override val sparse: SparseMatrix.SparseValue<Nothing> = SPARSE_CELL
+            override val sparse: SparseMatrix.SparseValue<Nothing> = SparseCell
         }
 
         @Suppress("UNCHECKED_CAST")

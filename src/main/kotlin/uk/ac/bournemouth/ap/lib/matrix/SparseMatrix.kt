@@ -136,7 +136,7 @@ public interface SparseMatrix<out T> : Iterable<T> {
      * @suppress
      */
     public fun toString(prefix: String): String {
-        val strings: SparseMatrix<String> = map<T, String> { it.toString() }
+        val strings: SparseMatrix<String> = map { it.toString() }
         val maxColWidth = strings.asSequence().map { it.length }.maxOrNull() ?: 0
         val capacity = maxWidth * maxColWidth + 2
         val lineSep = buildString(prefix.length+1) {
@@ -267,10 +267,10 @@ public interface SparseMatrix<out T> : Iterable<T> {
             maxHeight: Int,
             init: SparseInit<T>.(Int, Int) -> SparseValue<T>
         ): SparseMatrix<T> {
-            return CompactArrayMutableSparseMatrix<T>(
-                maxWidth,
-                maxHeight,
-                init
+            return CompactArrayMutableSparseMatrix(
+                maxWidth = maxWidth,
+                maxHeight = maxHeight,
+                init = init
             )
         }
 

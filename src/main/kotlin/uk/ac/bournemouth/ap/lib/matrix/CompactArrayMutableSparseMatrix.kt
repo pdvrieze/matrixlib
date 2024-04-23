@@ -19,7 +19,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
     override val maxHeight: Int get() = data.size / maxWidth
 
     override val validator: (Int, Int) -> Boolean =
-        { x, y -> data[x + y * maxWidth] != ArraySparseMatrix.SPARSE_CELL }
+        { x, y -> data[x + y * maxWidth] != ArraySparseMatrix.SparseCell }
 
     /**
      * Create a new instance of the class with the given validation function. All elements of the
@@ -38,7 +38,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
                     val y = it / maxWidth
                     when {
                         validator(x, y) -> initValue
-                        else -> ArraySparseMatrix.SPARSE_CELL
+                        else -> ArraySparseMatrix.SparseCell
                     }
                 })
 
@@ -62,7 +62,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
             val v = source[i % source.width, i / source.height]
             when {
                 v.isValid -> v.value
-                else -> ArraySparseMatrix.SPARSE_CELL
+                else -> ArraySparseMatrix.SparseCell
             }
         }
     )
@@ -75,7 +75,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
 
         val v = value()
 
-        if (v == ArraySparseMatrix.SPARSE_CELL) {
+        if (v == ArraySparseMatrix.SparseCell) {
             throw IndexOutOfBoundsException("($x, $y) is a sparse index")
         }
 
@@ -102,7 +102,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
     override fun isValid(x: Int, y: Int): Boolean {
         return x in 0 until maxWidth &&
                 y in 0 until maxHeight &&
-                data[x + y * maxWidth] != ArraySparseMatrix.SPARSE_CELL
+                data[x + y * maxWidth] != ArraySparseMatrix.SparseCell
     }
 
     override fun toString(): String = toString("CompactMutableSparseMatrix")
@@ -130,7 +130,7 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
             init: (Int, Int) -> T
         ): CompactArrayMutableSparseMatrix<T> {
             val sparse = ArraySparseMatrix.valueCreator<T>().sparse
-            val data = Array<Any?>(maxWidth * maxHeight) { c ->
+            val data = Array(maxWidth * maxHeight) { c ->
                 val x = c % maxWidth
                 val y = c / maxWidth
                 when {
