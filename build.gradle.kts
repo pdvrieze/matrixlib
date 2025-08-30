@@ -15,7 +15,7 @@ plugins {
 description = "Support library for working with 2D matrices. This includes matrices with gaps."
 
 group = "io.github.pdvrieze.matrixlib"
-version = "1.0.2"
+version = "1.0.3-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -38,8 +38,6 @@ kotlin {
     explicitApi()
     compilerOptions {
         jvmTarget = JvmTarget.JVM_1_8
-        languageVersion = KotlinVersion.KOTLIN_1_9
-        apiVersion = KotlinVersion.KOTLIN_1_8
         freeCompilerArgs.add("-Xjvm-default=all")
     }
     target {
@@ -83,20 +81,24 @@ tasks.withType<DokkaTask> {
     }
 }
 
+val repositoryDir = project.layout.buildDirectory.dir("project-local-repository")
+
 publishing {
     repositories {
-        maven {
-            name = "OSS_registry"
-            url = when {
-                "SNAPSHOT" in version.toString().uppercase() ->
-                    uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+        when {
+            "SNAPSHOT" in version.toString().uppercase() -> maven {
+                name = "OSS_registry"
+                url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+                credentials {
+                    username = project.findProperty("ossrh.username") as String?
+                    password = project.findProperty("ossrh.password") as String?
+                }
 
-                else                                           ->
-                    uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             }
-            credentials {
-                username = project.findProperty("ossrh.username") as String?
-                password = project.findProperty("ossrh.password") as String?
+
+            else -> maven {
+                name ="projectLocal"
+                url = uri(repositoryDir.map { it.asFile.toURI() })
             }
         }
     }
@@ -154,3 +156,26 @@ signing {
     setRequired { gradle.taskGraph.run { hasTask("publish") || hasTask("publishNative") } }
 }
 
+val repositoryArchive = tasks.register<Zip>("createRepositoryArchive") {
+    group = PublishingPlugin.PUBLISH_TASK_GROUP
+    description = "Create zip file for repository"
+    destinationDirectory = project.layout.buildDirectory.dir("repositoryArchive")
+    archiveBaseName = "${project.name}-${project.version}-publishing"
+}
+
+tasks.withType<PublishToMavenRepository> {
+    if (isEnabled) {
+        if(repository?.name == "projectLocal") {
+            if(repositoryDir.isPresent) {
+                repositoryDir.get().asFile.deleteRecursively()
+            }
+
+            val publishTask = this
+
+            repositoryArchive.configure {
+                dependsOn(publishTask)
+                from(repositoryDir)
+            }
+        }
+    }
+}
