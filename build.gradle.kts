@@ -1,7 +1,6 @@
 import kotlinx.validation.ExperimentalBCVApi
-import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
     alias(libs.plugins.kotlinJvm)
@@ -49,7 +48,7 @@ kotlin {
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
-    from(tasks.named("dokkaJavadoc"))
+    from(tasks.named("dokkaGeneratePublicationHtml"))
 }
 
 apiValidation {
@@ -59,12 +58,17 @@ apiValidation {
     }
 }
 
-tasks.withType<DokkaTask> {
+
+
+dokka {
     moduleName.set("MatrixLib")
-    dokkaSourceSets.configureEach {
-        noAndroidSdkLink.set(true)
-        noJdkLink.set(false)
-        includeNonPublic.set(false)
+    dokkaPublications.html {
+
+    }
+    dokkaSourceSets.main {
+//        noAndroidSdkLink.set(true)
+//        noJdkLink.set(false)
+        documentedVisibilities = setOf(VisibilityModifier.Public)
         skipEmptyPackages.set(true)
         skipDeprecated.set(true)
         perPackageOption {
