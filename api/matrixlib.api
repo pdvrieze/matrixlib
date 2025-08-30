@@ -386,6 +386,174 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix$C
 	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;
 }
 
+public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix : uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrixBase, uk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix$Companion;
+	public fun <init> (II)V
+	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)V
+	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
+	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public fun fill (C)V
+	public synthetic fun fill (Ljava/lang/Object;)V
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix$Companion {
+	public final fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix;
+}
+
+public abstract class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrixBase : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableSparseMatrix, uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix {
+	public fun <init> (II)V
+	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
+	protected final fun doGet (II)Ljava/lang/Character;
+	public synthetic fun doGet (II)Ljava/lang/Object;
+	protected fun doSet (IIC)V
+	public synthetic fun doSet (IILjava/lang/Object;)V
+	public synthetic fun get (II)Ljava/lang/Character;
+	protected final fun getData ()[C
+	public fun getMaxHeight ()I
+	public fun getMaxWidth ()I
+	public synthetic fun set (IIC)V
+	public final fun toFlatArray ()[C
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMatrix : uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrixBase {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMatrix$Companion;
+	public fun <init> (IILkotlin/jvm/functions/Function2;)V
+	public fun <init> (II[CLkotlin/jvm/functions/Function2;)V
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public fun fill (C)V
+	public synthetic fun fill (Ljava/lang/Object;)V
+	public fun getValidator ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMatrix$Companion {
+	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMatrix;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix : uk/ac/bournemouth/ap/lib/matrix/Matrix, uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix$Companion;
+	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
+	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public abstract fun toFlatArray ()[C
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/ImmutableMatrixCompanion {
+	public fun invoke (IIC)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public final fun invoke (IIC)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public synthetic fun invoke (IILjava/lang/Object;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/CharMatrixFunctionsKt {
+	public static final fun fill (Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;Lkotlin/jvm/functions/Function2;)V
+	public static final fun mapChar (Luk/ac/bournemouth/ap/lib/matrix/Matrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public static final fun mapChar (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public static final fun mapChar (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public static final fun mapChar (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix : uk/ac/bournemouth/ap/lib/matrix/MutableMatrix, uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix, uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix$Companion;
+	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableMatrixCompanion {
+	public final fun invoke (II)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public fun invoke (IIC)Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public final fun invoke (IIC)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public synthetic fun invoke (IILjava/lang/Object;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public synthetic fun invoke (IILjava/lang/Object;)Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public synthetic fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public synthetic fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix : uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix, uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix$Companion;
+	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
+	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public abstract fun set (IIC)V
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableSparseMatrixCompanion {
+	public fun fromSparseValueMatrix (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun fromSparseValueMatrix (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun invoke (IICLkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public final fun invoke (IICLkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public synthetic fun invoke (IILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun invoke (IILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+	public fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
+	public synthetic fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/SingleValueCharMatrix : uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix, uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix {
+	public fun <init> (IIC)V
+	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SingleValueCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix;
+	public synthetic fun get (II)Ljava/lang/Character;
+	public fun toFlatArray ()[C
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/SingleValueSparseCharMatrix : uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueSparseMatrix, uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix {
+	public fun <init> (IICLkotlin/jvm/functions/Function2;)V
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SingleValueSparseCharMatrix;
+	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public synthetic fun get (II)Ljava/lang/Character;
+	public fun getValidator ()Lkotlin/jvm/functions/Function2;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix : uk/ac/bournemouth/ap/lib/matrix/SparseMatrix {
+	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix$Companion;
+	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public abstract fun get (II)Ljava/lang/Character;
+}
+
+public final class uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/ImmutableSparseMatrixCompanion {
+	public fun fromSparseValueMatrix (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun invoke (IICLkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IICLkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public synthetic fun invoke (IILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+	public fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
+	public final fun invoke (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
+}
+
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/Coordinate {
 	public static final synthetic fun box-impl (I)Luk/ac/bournemouth/ap/lib/matrix/ext/Coordinate;
 	public static final fun component1-impl (I)I
