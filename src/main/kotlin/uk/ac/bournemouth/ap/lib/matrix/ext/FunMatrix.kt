@@ -1,5 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix.ext
 
+import uk.ac.bournemouth.ap.lib.matrix.ListView
 import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMatrix
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
 
@@ -26,4 +27,23 @@ public class FunMatrix<T>(
         return FunMatrix(width, height) { x, y -> transform(valueFun(x, y)) }
     }
 
+    override fun row(rowIndex: Int): ListView<T> {
+        return RowView(rowIndex)
+    }
+
+    override fun column(columnIndex: Int): ListView<T> {
+        return ColumnView(columnIndex)
+    }
+
+    private inner class ColumnView(val columnIndex: Int): ListView<T> {
+        override val size: Int get() = height
+
+        override fun get(index: Int): T = doGet(columnIndex, index)
+    }
+
+    private inner class RowView(val rowIndex: Int): ListView<T> {
+        override val size: Int get() = width
+
+        override fun get(index: Int): T = doGet(index, rowIndex)
+    }
 }

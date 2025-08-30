@@ -1,5 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix.char
 
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.impl.AbstractMutableSparseMatrix
 
 /**
@@ -23,8 +24,29 @@ public abstract class ArrayMutableCharMatrixBase internal constructor(
 
     final override fun doGet(x: Int, y: Int): Char = data[y * maxWidth + x]
 
-    override fun doSet(x: Int, y: Int, value: Char) {
-        data[y * maxWidth + x] = value
+    override fun doSet(x: Int, y: Int, value: Char): Char {
+        val idx = y * maxWidth + x
+        return data[idx].also { data[idx] = value }
+    }
+
+    @Deprecated("Binary compatibility only, don't use doSet", ReplaceWith("set(x, y, value)"), level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    override fun `$doSet`(x: Int, y: Int, value: Char) {
+        doSet(x, y, value)
+    }
+
+    override fun set(x: Int, y: Int, value: Char): Char? {
+        return doSet(x, y, value)
+    }
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @JvmName("set")
+    public override fun `$set`(x: Int, y: Int, value: Char) {
+        set(x, y, value)
     }
 
     override fun contentEquals(other: SparseCharMatrix): Boolean {

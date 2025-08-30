@@ -41,7 +41,6 @@ public class ArrayMutableSparseMatrix<T> : ArrayMutableMatrixBase<T>,
     override fun copyOf(): ArrayMutableSparseMatrix<T> =
         ArrayMutableSparseMatrix(this)
 
-
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */

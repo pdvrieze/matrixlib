@@ -1,4 +1,5 @@
 package uk.ac.bournemouth.ap.lib.matrix.char
+import uk.ac.bournemouth.ap.lib.matrix.ListView
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableMatrixCompanion
 
@@ -6,6 +7,10 @@ public interface CharMatrix : Matrix<Char>, SparseCharMatrix {
     public fun toFlatArray(): CharArray
     public fun contentEquals(other: CharMatrix): Boolean
     override fun copyOf(): CharMatrix
+
+    override fun row(rowIndex: Int): CharListView
+
+    override fun column(columnIndex: Int): CharListView
 
     /**
      * The companion object contains factory functions to create new instances with initialization.

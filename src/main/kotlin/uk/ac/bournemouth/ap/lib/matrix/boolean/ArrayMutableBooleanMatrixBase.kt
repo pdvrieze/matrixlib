@@ -33,8 +33,23 @@ public abstract class ArrayMutableBooleanMatrixBase internal constructor(
         return data[y * maxWidth + x]
     }
 
-    override fun doSet(x: Int, y: Int, value: Boolean) {
-        data[y * maxWidth + x] = value
+    override fun doSet(x: Int, y: Int, value: Boolean): Boolean {
+        val idx = y * maxWidth + x
+        return data[idx].also {
+            data[idx] = value
+        }
+    }
+
+    @Deprecated(
+        "Binary compatibility only, don't use doSet",
+        replaceWith = ReplaceWith("set(x, y, value)"),
+        level = DeprecationLevel.HIDDEN
+    )
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    override fun `$doSet`(x: Int, y: Int, value: Boolean) {
+        doSet(x, y, value)
     }
 
 

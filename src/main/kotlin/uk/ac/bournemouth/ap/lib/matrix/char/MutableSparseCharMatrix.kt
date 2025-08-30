@@ -12,7 +12,15 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableSparseMatrixCompanion
  * A mutable sparse matrix for integers. This interface supports mutating the values.
  */
 public interface MutableSparseCharMatrix : SparseCharMatrix, MutableSparseMatrix<Char> {
-    override operator fun set(x: Int, y: Int, value: Char)
+    override operator fun set(x: Int, y: Int, value: Char): Char?
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @JvmName("set")
+    override fun `$set`(x: Int, y: Int, value: Char) {
+        set(x, y, value)
+    }
 
     override fun copyOf(): MutableSparseCharMatrix
 

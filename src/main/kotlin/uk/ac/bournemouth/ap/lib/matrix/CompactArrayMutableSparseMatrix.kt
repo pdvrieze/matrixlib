@@ -87,9 +87,22 @@ public class CompactArrayMutableSparseMatrix<T> @PublishedApi internal construct
         return validate(x, y) { data[x + y * maxWidth] }
     }
 
-    override fun set(x: Int, y: Int, value: T) {
+    override fun set(x: Int, y: Int, value: T): T {
         validate(x, y)
-        data[x + y * maxWidth] = value
+        val idx = x + y * maxWidth
+
+        @Suppress("UNCHECKED_CAST")
+        val old = data[idx] as T
+        data[idx] = value
+        return old
+    }
+
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("set")
+    override fun `$set`(x: Int, y: Int, value: T) {
+        set(x, y , value)
     }
 
     /** Create a copy of this matrix */

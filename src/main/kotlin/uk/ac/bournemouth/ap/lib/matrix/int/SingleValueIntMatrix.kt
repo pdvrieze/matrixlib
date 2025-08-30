@@ -16,6 +16,14 @@ public class SingleValueIntMatrix(width: Int, height: Int, value: Int) :
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): IntArray = IntArray(width * height) { value }
 
+    override fun column(columnIndex: Int): IntListView {
+        return ColumnView()
+    }
+
+    override fun row(rowIndex: Int): IntListView {
+        return RowView()
+    }
+
     override fun contentEquals(other: IntMatrix): Boolean = when (other) {
         is SingleValueIntMatrix -> other.value == value
         else -> other.all { it == value }
@@ -23,6 +31,18 @@ public class SingleValueIntMatrix(width: Int, height: Int, value: Int) :
 
     override fun copyOf(): SingleValueIntMatrix {
         return SingleValueIntMatrix(width, height, value)
+    }
+
+    private inner class ColumnView : IntListView {
+        override fun get(index: Int): Int = value
+
+        override val size: Int get() = height
+    }
+
+    private inner class RowView : IntListView {
+        override fun get(index: Int): Int = value
+
+        override val size: Int get() = width
     }
 }
 

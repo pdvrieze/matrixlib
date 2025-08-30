@@ -1,5 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix.char
 
+import uk.ac.bournemouth.ap.lib.matrix.ListView
 import uk.ac.bournemouth.ap.lib.matrix.ext.SingleValueMatrix
 
 
@@ -16,6 +17,14 @@ public class SingleValueCharMatrix(width: Int, height: Int, value: Char) :
     @Deprecated("Do not call this directly it is meaningless")
     override fun toFlatArray(): CharArray = CharArray(width * height) { value }
 
+    override fun row(rowIndex: Int): CharListView {
+        return RowView(rowIndex)
+    }
+
+    override fun column(columnIndex: Int): CharListView {
+        return ColumnView(columnIndex)
+    }
+
     override fun contentEquals(other: CharMatrix): Boolean = when (other) {
         is SingleValueCharMatrix -> other.value == value
         else -> other.all { it == value }
@@ -23,6 +32,17 @@ public class SingleValueCharMatrix(width: Int, height: Int, value: Char) :
 
     override fun copyOf(): SingleValueCharMatrix {
         return SingleValueCharMatrix(width, height, value)
+    }
+
+    private inner class ColumnView(val columnIndex: Int) : CharListView {
+        override val size: Int get() = height
+
+        override fun get(index: Int): Char = doGet(columnIndex, index)
+    }
+
+    private inner class RowView(val rowIndex: Int) : CharListView {
+        override val size: Int get() = width
+        override fun get(index: Int): Char = doGet(index, rowIndex)
     }
 }
 

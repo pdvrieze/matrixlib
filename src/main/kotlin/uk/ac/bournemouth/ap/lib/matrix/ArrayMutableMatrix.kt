@@ -47,14 +47,29 @@ public class ArrayMutableMatrix<T> @PublishedApi internal constructor(
             }
         })
 
-    override fun doSet(x: Int, y: Int, value: T) {
-        data[x + y * maxWidth] = value
+    override fun doSet(x: Int, y: Int, value: T): T {
+        val idx = x + y * maxWidth
+        val old = data[idx]
+        data[idx] = value
+        return old as T
+    }
+
+    @Deprecated("Binary compatibility only, don't use doSet", ReplaceWith("set(x, y, value)"), level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    override fun `$doSet`(x: Int, y: Int, value: T) {
+        doSet(x, y, value)
     }
 
     override fun doGet(x: Int, y: Int): T {
         @Suppress("UNCHECKED_CAST")
         return data[x + y * maxWidth] as T
     }
+
+    override fun row(rowIndex: Int): MutableListView<T> = RowView(rowIndex)
+
+    override fun column(columnIndex: Int): MutableListView<T> = ColumnView(columnIndex)
 
     /**
      * Creates a copy of the matrix of an appropriate type with the same content.
@@ -92,4 +107,32 @@ public class ArrayMutableMatrix<T> @PublishedApi internal constructor(
             return ArrayMutableMatrix(width, data)
         }
     }
+
+
+    private inner class RowView(private val rowIdx: Int): MutableListView<T> {
+        override val size: Int get() = width
+
+        override fun get(index: Int): T {
+            return doGet(index, rowIdx)
+        }
+
+        override fun set(index: Int, element: T): T {
+            return doSet(index, rowIdx, element)
+        }
+
+
+    }
+
+    private inner class ColumnView(private val colIdx: Int): MutableListView<T> {
+        override val size: Int get() = width
+
+        override fun get(index: Int): T {
+            return doGet(colIdx, index)
+        }
+
+        override fun set(index: Int, element: T): T {
+            return doSet(colIdx, index, element)
+        }
+    }
+
 }

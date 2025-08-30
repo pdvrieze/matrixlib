@@ -12,8 +12,14 @@ public interface BooleanMatrix : Matrix<Boolean>, SparseBooleanMatrix {
      * @suppress
      */
     public fun toFlatArray(): BooleanArray
+
     public fun contentEquals(other: BooleanMatrix): Boolean
+
     override fun copyOf(): BooleanMatrix
+
+    override fun row(rowIndex: Int): BooleanListView
+
+    override fun column(columnIndex: Int): BooleanListView
 
     /**
      * The companion object contains factory functions to create new instances with initialization.

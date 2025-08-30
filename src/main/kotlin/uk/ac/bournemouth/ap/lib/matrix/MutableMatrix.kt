@@ -1,5 +1,6 @@
 package uk.ac.bournemouth.ap.lib.matrix
 
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 import uk.ac.bournemouth.ap.lib.matrix.impl.MutableMatrixCompanion
 
 /**
@@ -7,6 +8,14 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableMatrixCompanion
  */
 public interface MutableMatrix<T> : MutableSparseMatrix<T>, Matrix<T> {
     override fun copyOf(): MutableMatrix<T>
+
+    override fun row(rowIndex: Int): MutableListView<T>
+
+    override fun column(columnIndex: Int): MutableListView<T>
+
+    override fun set(x: Int, y: Int, value: T): T
+
+    override fun set(pos: Coordinate, value: T): T = set(pos.x, pos.y, value)
 
     /**
      * The companion object contains factory functions to create new instances. There is no

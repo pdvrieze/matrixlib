@@ -1,6 +1,8 @@
 package uk.ac.bournemouth.ap.lib.matrix.boolean
 
+import uk.ac.bournemouth.ap.lib.matrix.MutableListView
 import uk.ac.bournemouth.ap.lib.matrix.SparseMatrix
+import uk.ac.bournemouth.ap.lib.matrix.ext.Coordinate
 
 /**
  * An implementation of a mutable matrix backed by a [BooleanArray]. This matrix optimizes storing
@@ -32,6 +34,18 @@ public class ArrayMutableBooleanMatrix :
     internal constructor(width: Int, data: BooleanArray) :
             super(width, data)
 
+    override fun row(rowIndex: Int): MutableBooleanListView {
+        return RowView(rowIndex)
+    }
+
+    override fun column(columnIndex: Int): MutableBooleanListView {
+        return ColumnView(columnIndex)
+    }
+
+    override fun set(x: Int, y: Int, value: Boolean): Boolean {
+        return doSet(x, y, value)
+    }
+
     override fun copyOf(): ArrayMutableBooleanMatrix {
         return ArrayMutableBooleanMatrix(width, data.copyOf())
     }
@@ -44,6 +58,32 @@ public class ArrayMutableBooleanMatrix :
     override fun contentEquals(other: SparseMatrix<*>): Boolean = when (other) {
         is BooleanMatrix -> contentEquals(other)
         else -> super<ArrayMutableBooleanMatrixBase>.contentEquals(other)
+    }
+
+    private inner class RowView(private val rowIdx: Int): MutableBooleanListView {
+        override val size: Int get() = width
+
+        override fun get(index: Int): Boolean {
+            return doGet(index, rowIdx)
+        }
+
+        override fun set(index: Int, element: Boolean): Boolean {
+            return doSet(index, rowIdx, element)
+        }
+
+
+    }
+
+    private inner class ColumnView(private val colIdx: Int): MutableBooleanListView {
+        override val size: Int get() = width
+
+        override fun get(index: Int): Boolean {
+            return doGet(colIdx, index)
+        }
+
+        override fun set(index: Int, element: Boolean): Boolean {
+            return doSet(colIdx, index, element)
+        }
     }
 
     /**

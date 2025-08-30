@@ -9,13 +9,26 @@ import uk.ac.bournemouth.ap.lib.matrix.MutableMatrix
 public abstract class AbstractMutableMatrix<T> protected constructor() : AbstractMatrix<T>(),
     MutableMatrix<T> {
 
-    final override fun set(x: Int, y: Int, value: T) {
+    final override fun set(x: Int, y: Int, value: T): T {
         validate(x, y)
-        doSet(x, y, value)
+        return doSet(x, y, value)
+    }
+
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    final override fun `$set`(x: Int, y: Int, value: T) {
+        set(x, y , value)
     }
 
     /** Actual implementation of setting values, does not need validation */
-    public abstract fun doSet(x: Int, y: Int, value: T)
+    protected abstract fun doSet(x: Int, y: Int, value: T): T
+
+    @Deprecated("Binary compatibility only, don't use doSet", ReplaceWith("set(x, y, value)"), level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    public open fun `$doSet`(x: Int, y: Int, value: T) {
+        doSet(x, y, value)
+    }
 
     /** Get a string representation of the matrix (line wrapped) */
     override fun toString(): String = toString("MutableMatrix")

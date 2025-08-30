@@ -41,6 +41,16 @@ public interface Matrix<out T> : SparseMatrix<T> {
         return x in 0 until width && y in 0 until height
     }
 
+    /**
+     * Provide a row view for the matrix. It maps the original matrix.
+     */
+    public fun row(rowIndex: Int): ListView<T>
+
+    /**
+     * Provide a column view for the matrix. It maps the original
+     */
+    public fun column(columnIndex: Int): ListView<T>
+
     override fun copyOf(): Matrix<T>
 
     /**

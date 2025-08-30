@@ -23,6 +23,9 @@ public class ArrayMatrix<T> @PublishedApi internal constructor(
      */
     override fun copyOf(): ArrayMatrix<T> = ArrayMatrix(data, width)
 
+    override fun row(rowIndex: Int): ListView<T> = RowView(rowIndex)
+
+    override fun column(columnIndex: Int): ListView<T> = ColumnView(columnIndex)
 
     /**
      * Optimized implementation of forEach.
@@ -57,5 +60,22 @@ public class ArrayMatrix<T> @PublishedApi internal constructor(
             } as Array<T>,
             width
         )
+    }
+
+    private inner class RowView(private val rowIdx: Int): ListView<T> {
+        override val size: Int get() = width
+
+        override operator fun get(index: Int): T {
+            return doGet(index, rowIdx)
+        }
+
+    }
+
+    private inner class ColumnView(private val colIdx: Int): ListView<T> {
+        override val size: Int get() = width
+
+        override operator fun get(index: Int): T {
+            return doGet(colIdx, index)
+        }
     }
 }

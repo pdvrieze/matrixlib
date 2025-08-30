@@ -1,12 +1,14 @@
 public final class uk/ac/bournemouth/ap/lib/matrix/ArrayMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/ArrayMatrix$Companion;
 	public fun <init> ([Ljava/lang/Object;I)V
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ArrayMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public fun forEach (Ljava/util/function/Consumer;)V
 	public fun getHeight ()I
 	public fun getWidth ()I
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ArrayMatrix$Companion {
@@ -18,15 +20,19 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrix : uk/ac/bo
 	public fun <init> (IILjava/lang/Object;)V
 	public fun <init> (I[Ljava/lang/Object;)V
 	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
-	public fun doSet (IILjava/lang/Object;)V
+	public synthetic fun doSet (IILjava/lang/Object;)V
 	public fun forEach (Ljava/util/function/Consumer;)V
 	public fun getHeight ()I
 	public fun getWidth ()I
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrix$Companion {
@@ -39,7 +45,8 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrixBase : u
 	protected fun <init> (Luk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrixBase;)V
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ArrayMutableMatrixBase;
 	protected final fun doGet (II)Ljava/lang/Object;
-	protected fun doSet (IILjava/lang/Object;)V
+	protected fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
+	protected synthetic fun doSet (IILjava/lang/Object;)V
 	public fun forEach (Ljava/util/function/Consumer;)V
 	public final fun getMaxHeight ()I
 	public fun getMaxWidth ()I
@@ -92,13 +99,28 @@ public final class uk/ac/bournemouth/ap/lib/matrix/CompactArrayMutableSparseMatr
 	public fun getMaxWidth ()I
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun isValid (II)Z
-	public fun set (IILjava/lang/Object;)V
+	public fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun set (IILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/CompactArrayMutableSparseMatrix$Companion {
 	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/CompactArrayMutableSparseMatrix;
 	public final fun invoke (IILkotlin/jvm/functions/Function3;)Luk/ac/bournemouth/ap/lib/matrix/CompactArrayMutableSparseMatrix;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/ListView : java/util/List, kotlin/jvm/internal/markers/KMappedMarker {
+	public fun contains (Ljava/lang/Object;)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public abstract fun get (I)Ljava/lang/Object;
+	public fun indexOf (Ljava/lang/Object;)I
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public fun lastIndexOf (Ljava/lang/Object;)I
+	public fun listIterator ()Ljava/util/ListIterator;
+	public fun listIterator (I)Ljava/util/ListIterator;
+	public synthetic fun subList (II)Ljava/util/List;
+	public fun subList (II)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/MatricesKt {
@@ -113,6 +135,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/MatricesKt {
 
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/Matrix : uk/ac/bournemouth/ap/lib/matrix/SparseMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/Matrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Z
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
@@ -123,6 +146,7 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/Matrix : uk/ac/b
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun getWidth ()I
 	public fun isValid (II)Z
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/Matrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/ImmutableMatrixCompanion {
@@ -133,9 +157,17 @@ public final class uk/ac/bournemouth/ap/lib/matrix/Matrix$Companion : uk/ac/bour
 	public fun invoke (Luk/ac/bournemouth/ap/lib/matrix/Matrix;)Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/MutableListView : uk/ac/bournemouth/ap/lib/matrix/ListView {
+	public abstract fun set (ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/MutableMatrix : uk/ac/bournemouth/ap/lib/matrix/Matrix, uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public abstract fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public fun set-KjcGOE0 (ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/MutableMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableMatrixCompanion {
@@ -151,8 +183,10 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/MutableSparseMat
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix$Companion;
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix;
 	public fun fill (Ljava/lang/Object;)V
-	public abstract fun set (IILjava/lang/Object;)V
-	public fun set-KjcGOE0 (ILjava/lang/Object;)V
+	public fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun set (IILjava/lang/Object;)V
+	public synthetic fun set (ILjava/lang/Object;)V
+	public fun set-KjcGOE0 (ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableSparseMatrixCompanion {
@@ -211,6 +245,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMa
 	public synthetic fun <init> (II[Z)V
 	public fun <init> (I[Z)V
 	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
@@ -222,6 +260,12 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMa
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanListView;
+	public synthetic fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public fun set (IIZ)Ljava/lang/Boolean;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBooleanMatrix$Companion {
@@ -233,8 +277,10 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableBoolea
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	protected fun doGet (II)Ljava/lang/Boolean;
 	public synthetic fun doGet (II)Ljava/lang/Object;
+	public synthetic fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun doSet (IILjava/lang/Object;)V
-	protected fun doSet (IIZ)V
+	protected fun doSet (IIZ)Ljava/lang/Boolean;
+	protected synthetic fun doSet (IIZ)V
 	public synthetic fun fill (Ljava/lang/Object;)V
 	public fun fill (Z)V
 	protected final fun getData ()[Z
@@ -260,10 +306,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableSparseBoo
 	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/boolean/ArrayMutableSparseBooleanMatrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView : uk/ac/bournemouth/ap/lib/matrix/ListView {
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix : uk/ac/bournemouth/ap/lib/matrix/Matrix, uk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
 	public abstract fun toFlatArray ()[Z
 }
 
@@ -297,15 +348,22 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/CompactMutableBoolean
 	public fun getMaxWidth ()I
 	public fun getValidator ()Lkotlin/jvm/functions/Function2;
 	public fun isValid (II)Z
+	public synthetic fun set (IILjava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun set (IILjava/lang/Object;)V
-	public fun set (IIZ)V
+	public fun set (IIZ)Ljava/lang/Boolean;
+	public synthetic fun set (IIZ)V
 	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanListView : uk/ac/bournemouth/ap/lib/matrix/MutableListView, uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView {
 }
 
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix : uk/ac/bournemouth/ap/lib/matrix/MutableMatrix, uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix, uk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableBooleanMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableMatrixCompanion {
@@ -350,6 +408,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/MutableSparseBooleanM
 
 public final class uk/ac/bournemouth/ap/lib/matrix/boolean/SingleValueBooleanMatrix : uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix, uk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix {
 	public fun <init> (IIZ)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
@@ -357,6 +417,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/boolean/SingleValueBooleanMat
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/SingleValueBooleanMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/boolean/SparseBooleanMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/boolean/BooleanListView;
 	public fun toFlatArray ()[Z
 }
 
@@ -390,6 +452,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix :
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix$Companion;
 	public fun <init> (II)V
 	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
@@ -403,6 +469,12 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix :
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
 	public fun fill (C)V
 	public synthetic fun fill (Ljava/lang/Object;)V
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharListView;
+	public fun set (IIC)Ljava/lang/Character;
+	public synthetic fun set (IILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix$Companion {
@@ -410,17 +482,23 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrix$C
 }
 
 public abstract class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableCharMatrixBase : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableSparseMatrix, uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix {
+	public synthetic fun $set (IILjava/lang/Object;)V
 	public fun <init> (II)V
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
 	protected final fun doGet (II)Ljava/lang/Character;
 	public synthetic fun doGet (II)Ljava/lang/Object;
-	protected fun doSet (IIC)V
+	protected fun doSet (IIC)Ljava/lang/Character;
+	protected synthetic fun doSet (IIC)V
+	public synthetic fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun doSet (IILjava/lang/Object;)V
 	public synthetic fun get (II)Ljava/lang/Character;
 	protected final fun getData ()[C
 	public fun getMaxHeight ()I
 	public fun getMaxWidth ()I
+	public fun set (IIC)Ljava/lang/Character;
 	public synthetic fun set (IIC)V
+	public synthetic fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun set (IILjava/lang/Object;)V
 	public final fun toFlatArray ()[C
 }
 
@@ -441,10 +519,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMa
 	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/char/ArrayMutableSparseCharMatrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/CharListView : uk/ac/bournemouth/ap/lib/matrix/ListView {
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix : uk/ac/bournemouth/ap/lib/matrix/Matrix, uk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
 	public abstract fun toFlatArray ()[C
 }
 
@@ -467,9 +550,14 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/CharMatrixFunctionsKt {
 	public static final fun mapChar (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/MutableCharListView : uk/ac/bournemouth/ap/lib/matrix/MutableListView, uk/ac/bournemouth/ap/lib/matrix/char/CharListView {
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix : uk/ac/bournemouth/ap/lib/matrix/MutableMatrix, uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix, uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharListView;
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/char/MutableCharListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/char/MutableCharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableMatrixCompanion {
@@ -491,7 +579,9 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/char/MutableSpar
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix$Companion;
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix;
-	public abstract fun set (IIC)V
+	public abstract fun set (IIC)Ljava/lang/Character;
+	public synthetic fun set (IIC)V
+	public synthetic fun set (IILjava/lang/Object;)V
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableSparseMatrixCompanion {
@@ -515,6 +605,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/MutableSparseCharMatrix$
 
 public final class uk/ac/bournemouth/ap/lib/matrix/char/SingleValueCharMatrix : uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix, uk/ac/bournemouth/ap/lib/matrix/char/CharMatrix {
 	public fun <init> (IIC)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/char/CharMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
@@ -523,6 +615,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/char/SingleValueCharMatrix : 
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/char/SparseCharMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix;
 	public synthetic fun get (II)Ljava/lang/Character;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/char/CharListView;
 	public fun toFlatArray ()[C
 }
 
@@ -583,6 +677,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/CoordinateKt {
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix {
 	public fun <init> (IILkotlin/jvm/functions/Function2;)V
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix;
@@ -590,6 +685,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix : uk/ac/bournem
 	public final fun getValueFun ()Lkotlin/jvm/functions/Function2;
 	public fun getWidth ()I
 	public final fun map (Lkotlin/jvm/functions/Function1;)Luk/ac/bournemouth/ap/lib/matrix/ext/FunMatrix;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix : uk/ac/bournemouth/ap/lib/matrix/SparseMatrix {
@@ -606,6 +702,7 @@ public final class uk/ac/bournemouth/ap/lib/matrix/ext/FunSparseMatrix : uk/ac/b
 
 public class uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix {
 	public fun <init> (IILjava/lang/Object;)V
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix;
@@ -613,6 +710,7 @@ public class uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix : uk/ac/bourn
 	public fun getHeight ()I
 	protected final fun getValue ()Ljava/lang/Object;
 	public fun getWidth ()I
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
 }
 
 public class uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueSparseMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractSparseMatrix {
@@ -635,16 +733,22 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix : uk/a
 }
 
 public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMatrix, uk/ac/bournemouth/ap/lib/matrix/MutableMatrix {
+	public final synthetic fun $set (IILjava/lang/Object;)V
 	protected fun <init> ()V
-	public abstract fun doSet (IILjava/lang/Object;)V
-	public final fun set (IILjava/lang/Object;)V
+	protected abstract fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun doSet (IILjava/lang/Object;)V
+	public final fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun set (IILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 }
 
 public abstract class uk/ac/bournemouth/ap/lib/matrix/impl/AbstractMutableSparseMatrix : uk/ac/bournemouth/ap/lib/matrix/impl/AbstractSparseMatrix, uk/ac/bournemouth/ap/lib/matrix/MutableSparseMatrix {
+	public synthetic fun $set (IILjava/lang/Object;)V
 	protected fun <init> ()V
-	protected abstract fun doSet (IILjava/lang/Object;)V
-	public final fun set (IILjava/lang/Object;)V
+	protected abstract fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
+	protected synthetic fun doSet (IILjava/lang/Object;)V
+	public fun set (IILjava/lang/Object;)Ljava/lang/Object;
+	public synthetic fun set (IILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 }
 
@@ -701,6 +805,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrix : u
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrix$Companion;
 	public fun <init> (II)V
 	public fun <init> (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Z
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
@@ -714,6 +822,10 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrix : u
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;
 	public fun fill (I)V
 	public synthetic fun fill (Ljava/lang/Object;)V
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/MutableListView;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrix$Companion {
@@ -725,13 +837,17 @@ public abstract class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableIntMatrixB
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Z
 	protected final fun doGet (II)Ljava/lang/Integer;
 	public synthetic fun doGet (II)Ljava/lang/Object;
-	protected fun doSet (III)V
+	protected fun doSet (III)Ljava/lang/Integer;
+	protected synthetic fun doSet (III)V
+	public synthetic fun doSet (IILjava/lang/Object;)Ljava/lang/Object;
 	public synthetic fun doSet (IILjava/lang/Object;)V
 	public synthetic fun get (II)Ljava/lang/Integer;
 	protected final fun getData ()[I
 	public fun getMaxHeight ()I
 	public fun getMaxWidth ()I
+	public fun set (III)Ljava/lang/Integer;
 	public synthetic fun set (III)V
+	public synthetic fun set (IILjava/lang/Object;)Ljava/lang/Object;
 	public final fun toFlatArray ()[I
 }
 
@@ -752,10 +868,15 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableSparseIntMatr
 	public final fun invoke (IILkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;)Luk/ac/bournemouth/ap/lib/matrix/int/ArrayMutableSparseIntMatrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/int/IntListView : uk/ac/bournemouth/ap/lib/matrix/ListView {
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/int/IntMatrix : uk/ac/bournemouth/ap/lib/matrix/Matrix, uk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
 	public fun sum ()I
 	public abstract fun toFlatArray ()[I
 }
@@ -788,9 +909,14 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/IntMatrixFunctionsKt {
 	public static final fun times (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;
 }
 
+public abstract interface class uk/ac/bournemouth/ap/lib/matrix/int/MutableIntListView : uk/ac/bournemouth/ap/lib/matrix/MutableListView, uk/ac/bournemouth/ap/lib/matrix/int/IntListView {
+}
+
 public abstract interface class uk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix : uk/ac/bournemouth/ap/lib/matrix/MutableMatrix, uk/ac/bournemouth/ap/lib/matrix/int/IntMatrix, uk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix {
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix$Companion;
+	public abstract fun column (I)Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntListView;
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix;
+	public abstract fun row (I)Luk/ac/bournemouth/ap/lib/matrix/int/MutableIntListView;
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/int/MutableIntMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableMatrixCompanion {
@@ -812,7 +938,8 @@ public abstract interface class uk/ac/bournemouth/ap/lib/matrix/int/MutableSpars
 	public static final field Companion Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix$Companion;
 	public abstract fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;)Z
 	public abstract fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix;
-	public abstract fun set (III)V
+	public abstract fun set (III)Ljava/lang/Integer;
+	public synthetic fun set (III)V
 }
 
 public final class uk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix$Companion : uk/ac/bournemouth/ap/lib/matrix/impl/MutableSparseMatrixCompanion {
@@ -836,6 +963,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/MutableSparseIntMatrix$Co
 
 public final class uk/ac/bournemouth/ap/lib/matrix/int/SingleValueIntMatrix : uk/ac/bournemouth/ap/lib/matrix/ext/SingleValueMatrix, uk/ac/bournemouth/ap/lib/matrix/int/IntMatrix {
 	public fun <init> (III)V
+	public synthetic fun column (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun column (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
 	public fun contentEquals (Luk/ac/bournemouth/ap/lib/matrix/int/IntMatrix;)Z
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/Matrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/SparseMatrix;
@@ -844,6 +973,8 @@ public final class uk/ac/bournemouth/ap/lib/matrix/int/SingleValueIntMatrix : uk
 	public fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/SingleValueIntMatrix;
 	public synthetic fun copyOf ()Luk/ac/bournemouth/ap/lib/matrix/int/SparseIntMatrix;
 	public synthetic fun get (II)Ljava/lang/Integer;
+	public synthetic fun row (I)Luk/ac/bournemouth/ap/lib/matrix/ListView;
+	public fun row (I)Luk/ac/bournemouth/ap/lib/matrix/int/IntListView;
 	public fun toFlatArray ()[I
 }
 

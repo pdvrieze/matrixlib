@@ -1,4 +1,5 @@
 package uk.ac.bournemouth.ap.lib.matrix.int
+import uk.ac.bournemouth.ap.lib.matrix.ListView
 import uk.ac.bournemouth.ap.lib.matrix.Matrix
 import uk.ac.bournemouth.ap.lib.matrix.impl.ImmutableMatrixCompanion
 
@@ -12,6 +13,10 @@ public interface IntMatrix : Matrix<Int>, SparseIntMatrix {
         forEach { total += it }
         return total
     }
+
+    override fun row(rowIndex: Int): IntListView
+
+    override fun column(columnIndex: Int): IntListView
 
     /**
      * The companion object contains factory functions to create new instances with initialization.

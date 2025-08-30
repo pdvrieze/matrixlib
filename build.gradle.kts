@@ -14,7 +14,7 @@ plugins {
 description = "Support library for working with 2D matrices. This includes matrices with gaps."
 
 group = "io.github.pdvrieze.matrixlib"
-version = "1.0.3"
+version = "1.0.4-SNAPHOT"
 
 repositories {
     mavenCentral()

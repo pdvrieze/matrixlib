@@ -1,12 +1,12 @@
 package uk.ac.bournemouth.ap.lib.matrix.char
 
+import uk.ac.bournemouth.ap.lib.matrix.MutableListView
+
 /**
  * An implementation of a mutable matrix backed by a [CharArray]. This matrix optimizes storing Int
  * values.
  */
-public class ArrayMutableCharMatrix :
-    ArrayMutableCharMatrixBase,
-    MutableCharMatrix {
+public class ArrayMutableCharMatrix : ArrayMutableCharMatrixBase, MutableCharMatrix {
 
     public constructor(width: Int, height: Int) : super(width, height)
 
@@ -22,6 +22,18 @@ public class ArrayMutableCharMatrix :
         data.fill(value)
     }
 
+    override fun set(x: Int, y: Int, value: Char): Char {
+        return doSet(x, y, value)
+    }
+
+    override fun row(rowIndex: Int): MutableCharListView {
+        return RowView(rowIndex)
+    }
+
+    override fun column(columnIndex: Int): MutableCharListView {
+        return ColumnView(columnIndex)
+    }
+
     override fun copyOf(): ArrayMutableCharMatrix {
         return ArrayMutableCharMatrix(width, height, data.copyOf())
     }
@@ -34,6 +46,24 @@ public class ArrayMutableCharMatrix :
     override fun contentEquals(other: SparseCharMatrix): Boolean = when (other) {
         is CharMatrix -> contentEquals(other)
         else -> super<MutableCharMatrix>.contentEquals(other)
+    }
+
+    private inner class ColumnView(val columnIndex: Int) : MutableCharListView {
+        override fun get(index: Int): Char = doGet(columnIndex, index)
+
+        override val size: Int get() = height
+
+        override fun set(index: Int, element: Char): Char =
+            doSet(columnIndex, index, element)
+    }
+
+    private inner class RowView(val rowIndex: Int) : MutableCharListView {
+        override fun get(index: Int): Char = doGet(index, rowIndex)
+
+        override val size: Int get() = width
+
+        override fun set(index: Int, element: Char): Char =
+            doSet(index, rowIndex, element)
     }
 
     /**

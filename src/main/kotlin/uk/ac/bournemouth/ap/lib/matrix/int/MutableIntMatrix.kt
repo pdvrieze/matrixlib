@@ -10,6 +10,9 @@ import uk.ac.bournemouth.ap.lib.matrix.impl.MutableMatrixCompanion
 public interface MutableIntMatrix : IntMatrix, MutableSparseIntMatrix, MutableMatrix<Int> {
     override fun copyOf(): MutableIntMatrix
 
+    override fun column(columnIndex: Int): MutableIntListView
+
+    override fun row(rowIndex: Int): MutableIntListView
 
     /**
      * The companion object contains factory functions to create new instances with initialization.

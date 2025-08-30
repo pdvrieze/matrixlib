@@ -23,4 +23,24 @@ public class SingleValueBooleanMatrix(width: Int, height: Int, value: Boolean) :
     override fun copyOf(): SingleValueBooleanMatrix {
         return SingleValueBooleanMatrix(width, height, value)
     }
+
+    override fun row(rowIndex: Int): BooleanListView {
+        return RowView()
+    }
+
+    override fun column(columnIndex: Int): BooleanListView {
+        return ColumnView()
+    }
+
+    private inner class RowView: BooleanListView {
+        override fun get(index: Int): Boolean = value
+
+        override val size: Int get() = width
+    }
+
+    private inner class ColumnView: BooleanListView {
+        override fun get(index: Int): Boolean = value
+
+        override val size: Int get() = height
+    }
 }

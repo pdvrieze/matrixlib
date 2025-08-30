@@ -15,7 +15,21 @@ public interface MutableSparseMatrix<T> : SparseMatrix<T> {
      * @param y The y coordinate
      * @param value The new value
      */
-    public operator fun set(x: Int, y: Int, value: T)
+    public operator fun set(x: Int, y: Int, value: T): T? {
+        return get(x, y).also {
+            @Suppress("DEPRECATION_ERROR")
+            `$set`(x, y, value)
+        }
+    }
+
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.ERROR)
+    @JvmSynthetic
+    @JvmName("set")
+    public fun `$set`(x: Int, y: Int, value: T) {
+        set(x, y, value)
+    }
 
     /**
      * Set a specific value in the matrix
@@ -23,8 +37,16 @@ public interface MutableSparseMatrix<T> : SparseMatrix<T> {
      * @param pos The coordinate to set
      * @param value The new value
      */
-    public operator fun set(pos: Coordinate, value: T){ set(pos.x, pos.y, value) }
+    public operator fun set(pos: Coordinate, value: T): T? { return set(pos.x, pos.y, value) }
 
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @JvmName("set")
+    public fun `$set`(pos: Coordinate, value: T) {
+        set(pos, value)
+    }
     /**
      * Helper function to set values
      */

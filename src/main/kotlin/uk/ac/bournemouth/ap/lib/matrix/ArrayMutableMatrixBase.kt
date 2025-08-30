@@ -59,8 +59,21 @@ public abstract class ArrayMutableMatrixBase<T> protected constructor(
      */
     abstract override fun copyOf(): ArrayMutableMatrixBase<T>
 
-    override fun doSet(x: Int, y: Int, value: T) {
-        data[x + y * maxWidth] = value
+    override fun doSet(x: Int, y: Int, value: T): T {
+        val index = x + y * maxWidth
+        return data[index].also { data[index] = value } as T
+    }
+
+    @Deprecated(
+        "Binary compatibility only, don't use doSet",
+        replaceWith = ReplaceWith("set(x, y, value)"),
+        level = DeprecationLevel.HIDDEN
+    )
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    override fun `$doSet`(x: Int, y: Int, value: T) {
+        doSet(x, y, value)
     }
 
     final override fun doGet(x: Int, y: Int): T {

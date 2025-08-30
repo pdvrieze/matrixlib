@@ -36,9 +36,24 @@ public class CompactMutableBooleanSparseMatrix internal constructor(
         }
     }
 
-    override fun set(x: Int, y: Int, value: Boolean) {
+    override fun set(x: Int, y: Int, value: Boolean): Boolean? {
         validate(x, y)
-        data[x + y * maxWidth] = if (value) 1 else 0
+        val idx = x + y * maxWidth
+        val old = when(data[idx].toInt()) {
+            -1 -> null
+            0 -> false
+            else -> true
+        }
+        data[idx] = if (value) 1 else 0
+        return old
+    }
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.ERROR)
+    @JvmSynthetic
+    @JvmName("set")
+    override fun `$set`(x: Int, y: Int, value: Boolean) {
+        set(x, y, value)
     }
 
     override fun copyOf(): MutableSparseBooleanMatrix {

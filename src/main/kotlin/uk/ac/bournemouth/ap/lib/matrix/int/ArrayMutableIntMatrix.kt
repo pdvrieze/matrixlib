@@ -1,5 +1,7 @@
 package uk.ac.bournemouth.ap.lib.matrix.int
 
+import uk.ac.bournemouth.ap.lib.matrix.MutableListView
+
 /**
  * An implementation of a mutable matrix backed by an [IntArray]. This matrix optimizes storing Int
  * values.
@@ -26,6 +28,14 @@ public class ArrayMutableIntMatrix :
         return ArrayMutableIntMatrix(width, height, data.copyOf())
     }
 
+    override fun column(columnIndex: Int): MutableIntListView {
+        return ColumnView(columnIndex)
+    }
+
+    override fun row(rowIndex: Int): MutableIntListView {
+        return RowView(rowIndex)
+    }
+
     override fun contentEquals(other: IntMatrix): Boolean {
         if (width != other.width || height != other.height) return false
         return indices.all { c -> get(c) == other.get(c) }
@@ -34,6 +44,24 @@ public class ArrayMutableIntMatrix :
     override fun contentEquals(other: SparseIntMatrix): Boolean = when (other) {
         is IntMatrix -> contentEquals(other)
         else -> super<MutableIntMatrix>.contentEquals(other)
+    }
+
+    private inner class ColumnView(val columnIndex: Int): MutableIntListView {
+        override val size: Int get() = height
+
+        override fun get(index: Int): Int = doGet(columnIndex, index)
+
+        override fun set(index: Int, element: Int): Int =
+            doSet(columnIndex, index, element)
+    }
+
+    private inner class RowView(val rowIndex: Int): MutableIntListView {
+        override val size: Int get() = width
+
+        override fun get(index: Int): Int = doGet(index, rowIndex)
+
+        override fun set(index: Int, element: Int): Int =
+            doSet( index, rowIndex, element)
     }
 
     /**

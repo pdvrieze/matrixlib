@@ -15,6 +15,10 @@ public interface MutableBooleanMatrix : BooleanMatrix, MutableSparseBooleanMatri
         return super<MutableMatrix>.contentEquals(other)
     }
 
+    override fun row(rowIndex: Int): MutableBooleanListView
+
+    override fun column(columnIndex: Int): MutableBooleanListView
+
     /**
      * The companion object contains factory functions to create new instances with initialization.
      */

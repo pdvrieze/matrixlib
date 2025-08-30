@@ -23,8 +23,35 @@ public abstract class ArrayMutableIntMatrixBase internal constructor(
 
     final override fun doGet(x: Int, y: Int): Int = data[y * maxWidth + x]
 
-    override fun doSet(x: Int, y: Int, value: Int) {
-        data[y * maxWidth + x] = value
+    override fun set(x: Int, y: Int, value: Int): Int {
+        return doSet(x, y, value)
+    }
+
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @Deprecated("Binary compatibility only", level = DeprecationLevel.HIDDEN)
+    @JvmSynthetic
+    @JvmName("set")
+    public override fun `$set2`(x: Int, y: Int, value: Int) {
+        set(x, y, value)
+    }
+
+    override fun doSet(x: Int, y: Int, value: Int): Int {
+        val idx = y * maxHeight + x
+        return data[idx].also {
+            data[idx] = value
+        }
+    }
+
+    @Deprecated(
+        "Binary compatibility only, don't use doSet",
+        replaceWith = ReplaceWith("set(x, y, value)"),
+        level = DeprecationLevel.HIDDEN
+    )
+    @JvmSynthetic
+    @Suppress("INAPPLICABLE_JVM_NAME")
+    @JvmName("doSet")
+    override fun `$doSet`(x: Int, y: Int, value: Int) {
+        doSet(x, y, value)
     }
 
     override fun contentEquals(other: SparseIntMatrix): Boolean {
